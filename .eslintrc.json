@@ -4,13 +4,27 @@
     "commonjs": true,
     "es2021": true
   },
-  "extends": "airbnb-base",
+  "extends": ["airbnb-base", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
-    "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+
+    // Special Prettier rules
+    "curly": ["error", "all"],
+    "allowParens": "off",
+    "no-confusing-arrow": ["error", { "allowParens": false }],
+    "quotes": [
+      "warn",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": false }
+    ],
+    "no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ]
   }
 }
