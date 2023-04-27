@@ -42,6 +42,12 @@ const Project = (state = {}) => {
     tasks = tasks.filter((t) => t.getId() !== task.getId());
   };
 
+  const updateTask = (task) => {
+    const index = tasks.findIndex((t) => t.getId() === task.getId());
+
+    tasks[index] = task;
+  };
+
   const isFavorite = () => favorite;
 
   const toggleFavorite = () => {
@@ -73,6 +79,7 @@ const Project = (state = {}) => {
     getTasks,
     addTask,
     removeTask,
+    updateTask,
     isFavorite,
     toggleFavorite,
     getView,

@@ -47,6 +47,7 @@
     "*.{html,css,md}": "prettier --write"
   },
   "dependencies": {
+    "date-fns": "^2.29.3",
     "uuid": "^9.0.0"
   }
 }

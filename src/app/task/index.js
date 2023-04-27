@@ -1,6 +1,7 @@
 // This file contains the Task factory function, which represents a task in a to-do list.
 
 import { v4 as uuidv4 } from 'uuid';
+import { isAfter, isToday } from 'date-fns';
 import { PRIORITY } from '../constants';
 
 const Task = (state = {}) => {
@@ -72,6 +73,24 @@ const Task = (state = {}) => {
     createdDate = taskCreatedDate;
   };
 
+  const dueDateIsToday = () => {
+    const today = new Date();
+
+    return isToday(today, dueDate);
+  };
+
+  const dueDateIsUpcoming = () => {
+    const today = new Date();
+
+    return isAfter(dueDate, today);
+  };
+
+  const isOverdue = () => {
+    const today = new Date();
+
+    return isAfter(today, dueDate);
+  };
+
   /* Returns a JSON representation of the task. */
   const toJSON = () => ({
     id,
@@ -105,6 +124,9 @@ const Task = (state = {}) => {
     removeLabel,
     getCreatedDate,
     setCreatedDate,
+    dueDateIsToday,
+    dueDateIsUpcoming,
+    isOverdue,
     toJSON,
   };
 };
