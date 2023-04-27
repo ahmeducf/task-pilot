@@ -1,6 +1,7 @@
 // This file contains the Task factory function, which represents a task in a to-do list.
 
 import { v4 as uuidv4 } from 'uuid';
+import { PRIORITY } from '../constants';
 
 const Task = (state = {}) => {
   const id = uuidv4();
@@ -8,7 +9,7 @@ const Task = (state = {}) => {
   let description = state.description ?? '';
   let completed = state.completed ?? false;
   let dueDate = state.dueDate ?? null;
-  let priority = state.priority ?? 'p4';
+  let priority = state.priority ?? PRIORITY.P4;
   let labels = state.labels ?? [];
   let projectID = state.projectID ?? null;
 
