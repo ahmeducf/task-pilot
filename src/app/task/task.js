@@ -12,6 +12,7 @@ const Task = (state = {}) => {
   let priority = state.priority ?? PRIORITY.P4;
   let labels = state.labels ?? [];
   let projectID = state.projectID ?? null;
+  let createdDate = new Date();
 
   const getId = () => id;
 
@@ -65,6 +66,12 @@ const Task = (state = {}) => {
     projectID = taskProjectID;
   };
 
+  const getCreatedDate = () => createdDate;
+
+  const setCreatedDate = (taskCreatedDate) => {
+    createdDate = taskCreatedDate;
+  };
+
   /* Returns a JSON representation of the task. */
   const toJSON = () => ({
     id,
@@ -75,6 +82,7 @@ const Task = (state = {}) => {
     priority,
     labels,
     projectID,
+    createdDate,
   });
 
   return {
@@ -95,6 +103,8 @@ const Task = (state = {}) => {
     setLabels,
     addLabel,
     removeLabel,
+    getCreatedDate,
+    setCreatedDate,
     toJSON,
   };
 };
