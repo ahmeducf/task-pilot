@@ -9,4 +9,21 @@ const PRIORITY = {
   P4: 'P4',
 };
 
-export { COLOR, PRIORITY };
+const LAYOUT = {
+  LIST: 'LIST',
+  BOARD: 'BOARD',
+};
+
+const SORT = {
+  DUE_DATE: 'DUE_DATE',
+  PRIORITY: 'PRIORITY',
+  TITLE: 'TITLE',
+  CREATED_DATE: 'CREATED_DATE',
+};
+
+const ORDERING = {
+  ASC: 'ASC',
+  DESC: 'DESC',
+};
+
+export { COLOR, PRIORITY, LAYOUT, SORT, ORDERING };
