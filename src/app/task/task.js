@@ -64,6 +64,18 @@ const Task = (state = {}) => {
     projectID = taskProjectID;
   };
 
+  /* Returns a JSON representation of the task. */
+  const toJSON = () => ({
+    id,
+    title,
+    description,
+    completed,
+    dueDate,
+    priority,
+    labels,
+    projectID,
+  });
+
   return {
     getId,
     getTitle,
@@ -82,6 +94,7 @@ const Task = (state = {}) => {
     setLabels,
     addLabel,
     removeLabel,
+    toJSON,
   };
 };
 
