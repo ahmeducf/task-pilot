@@ -1,3 +1,5 @@
+// This file contains the Task factory function, which represents a task in a to-do list.
+
 import { v4 as uuidv4 } from 'uuid';
 
 const Task = (state = {}) => {
