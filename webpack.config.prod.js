@@ -21,6 +21,10 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        use: ['html-loader'],
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
@@ -34,7 +38,7 @@ module.exports = merge(common, {
       '...',
       new CssMinimizerPlugin(),
       new HtmlWebpackPlugin({
-        title: 'Restaurant Page',
+        title: 'Task pilot',
         favicon: './src/assets/favicon.ico',
         template: './src/index.html',
         minify: {
@@ -54,7 +58,21 @@ module.exports = merge(common, {
               ],
               ['imagemin-mozjpeg', { quality: 20, progressive: true }],
               ['imagemin-pngquant', { quality: [0, 0.1] }],
-              ['imagemin-svgo', { plugins: [{ removeViewBox: false }] }],
+              [
+                'imagemin-svgo',
+                {
+                  plugins: [
+                    {
+                      name: 'preset-default',
+                      params: {
+                        overrides: {
+                          removeViewBox: false,
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
             ],
           },
         },

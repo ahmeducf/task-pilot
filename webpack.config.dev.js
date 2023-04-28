@@ -17,13 +17,17 @@ module.exports = merge(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Restaurant Page',
+      title: 'Task Pilot',
       favicon: './src/assets/favicon.ico',
       template: './src/index.html',
     }),
   ],
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        use: ['html-loader'],
+      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
