@@ -1,0 +1,74 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
+
+/* Variables */
+:root {
+  --color-primary: #db4c3f;
+  --color-white: #fff;
+  --color-black: #202020;
+}
+
+/* Global styles */
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', 'cursive', system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+*,
+*::before,
+*::after {
+  /* CSS Reset */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* Catch errors */
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 44px;
+  padding: 0 16px;
+  background-color: var(--color-primary);
+}
+
+header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productivity-btn {
+  gap: 5px;
+}
+
+.productivity-btn .count {
+  line-height: 1;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-white);
+}
