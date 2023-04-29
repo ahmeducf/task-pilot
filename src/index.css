@@ -175,8 +175,18 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   align-items: center;
   justify-content: space-between;
   color: grey;
-  padding: 4px 0;
+  padding: 4px 0 4px 4px;
+  border-radius: 5px;
   user-select: none;
+}
+
+.projects__header {
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.projects__header:hover {
+  background-color: #eee;
 }
 
 .favorites__title,
@@ -184,4 +194,25 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1.5px;
+}
+
+.favorites__header button,
+.projects__header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: grey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  width: 28px;
+  height: 28px;
+  transition: all 0.15s ease;
+}
+
+.favorites__header button:hover,
+.projects__header button:hover {
+  color: #1a1a1a;
+  background-color: #eee;
 }
