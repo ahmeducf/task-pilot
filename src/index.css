@@ -6,6 +6,7 @@
   --color-primary: #db4c3f;
   --color-white: #fff;
   --color-black: #202020;
+  --color-menu-bg: rgb(250, 250, 250);
 }
 
 /* Global styles */
@@ -30,7 +31,8 @@ html {
   vertical-align: baseline;
 }
 
-ul {
+ul,
+li {
   list-style: none;
 }
 
@@ -46,6 +48,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Header */
 
 header {
   display: flex;
@@ -71,4 +75,113 @@ header button {
   font-size: 12px;
   font-weight: 400;
   color: var(--color-white);
+}
+
+/* Main */
+
+main {
+  flex: 1;
+  display: flex;
+}
+
+/* Menu */
+
+.menu {
+  flex: 0 0 266px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+  background-color: var(--color-menu-bg);
+}
+
+.main-filters {
+  padding-top: 32px;
+}
+
+ul.main-filters-list,
+ul.favorites-list {
+  display: flex;
+  flex-direction: column;
+}
+
+li.main-filters-list__item,
+li.favorites-list__item,
+li.projects-list__item {
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+li.main-filters-list__item button,
+li.favorites-list__item button,
+li.projects-list__item button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  width: 100%;
+  color: rgb(32, 32, 32);
+}
+
+button .icon-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+span.project-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-icon > div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+button .actions-count-wrapper,
+.favorites__header button,
+.projects__header button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions-menu-icon {
+  display: none;
+}
+
+span.count {
+  font-size: 12px;
+  color: #aaa;
+}
+
+li.main-filters-list__item:nth-of-type(2) span.count {
+  color: var(--color-primary);
+}
+
+.favorites__header,
+.projects__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: grey;
+  padding: 4px 0;
+  user-select: none;
+}
+
+.favorites__title,
+.projects__title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
 }
