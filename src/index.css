@@ -229,3 +229,11 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   color: var(--icon-color-hover);
   background-color: var(--color-item-bg-hover);
 }
+
+.toggle-list-btn svg {
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggle-list-btn.active svg {
+  transform: rotate(90deg);
+}
