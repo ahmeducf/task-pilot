@@ -95,6 +95,10 @@ header button:hover {
   width: 166px;
 }
 
+.quick-search.active {
+  width: 450px;
+}
+
 .quick-search input {
   margin: 0;
   border: 1px solid transparent;
@@ -114,11 +118,20 @@ header button:hover {
   background-color: #fff;
 }
 
+.quick-search input:focus {
+  color: var(--color-black);
+  background-color: #fff;
+}
+
 .quick-search input::placeholder {
   color: #fff;
 }
 
 .quick-search input:hover::placeholder {
+  color: grey;
+}
+
+.quick-search input:focus::placeholder {
   color: grey;
 }
 
@@ -132,6 +145,10 @@ header button:hover {
 }
 
 .quick-search input:hover + svg {
+  color: grey;
+}
+
+.quick-search input:focus + svg {
   color: grey;
 }
 
