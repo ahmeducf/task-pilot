@@ -8,19 +8,48 @@
   </head>
   <body>
     <header>
-      <button class="menu-toggle-btn">
-        <img src="./assets/icons/burger-menu-icon.svg" alt="Menu toggle" />
-      </button>
-      <button class="today-tasks-btn">
-        <img src="./assets/icons/home-icon.svg" alt="Today tasks" />
-      </button>
-      <button class="productivity-btn">
-        <img src="./assets/icons/productivity-icon.svg" alt="Settings" />
-        <span class="count">0/5</span>
-      </button>
-      <button class="add-task-btn">
-        <img src="./assets/icons/add-icon-white-24x24.svg" alt="Add task" />
-      </button>
+      <div class="left-controls">
+        <button class="menu-toggle-btn">
+          <img src="./assets/icons/burger-menu-icon.svg" alt="Menu toggle" />
+        </button>
+        <button class="today-tasks-btn">
+          <img src="./assets/icons/home-icon.svg" alt="Today tasks" />
+        </button>
+        <div class="quick-search">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search"
+            autocomplete="off"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.5 3a7.5 7.5 0 015.645 12.438l4.709 4.708a.502.502 0 01-.708.708l-4.708-4.709A7.5 7.5 0 1110.5 3zm0 1a6.5 6.5 0 100 13 6.5 6.5 0 000-13z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div class="right-controls">
+        <button class="add-task-btn">
+          <img src="./assets/icons/add-icon-white-24x24.svg" alt="Add task" />
+        </button>
+        <button class="productivity-btn">
+          <img src="./assets/icons/productivity-icon.svg" alt="Settings" />
+          <span class="count">0/5</span>
+        </button>
+        <button class="help-btn">
+          <img src="./assets/icons/help-icon.svg" alt="Help" />
+        </button>
+        <button class="notification-btn">
+          <img src="./assets/icons/notification-icon.svg" alt="Notifications" />
+        </button>
+      </div>
     </header>
     <main>
       <nav class="menu">

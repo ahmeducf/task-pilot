@@ -60,20 +60,92 @@ body {
 header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
   height: 44px;
-  padding: 0 16px;
+  padding: 0 20px;
   background-color: var(--color-primary);
+}
+
+.left-controls,
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.right-controls {
+  margin-right: 12px;
 }
 
 header button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 3px;
+  width: 28px;
+  height: 28px;
+}
+
+header button:hover {
+  background-color: #ffffff33;
+}
+
+.quick-search {
+  position: relative;
+  width: 166px;
+}
+
+.quick-search input {
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+  color: #fff;
+  padding: 5px 0 5px 30px;
+  background: #ffffff33;
+  font-size: 13px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-search input:hover {
+  color: grey;
+  background-color: #fff;
+}
+
+.quick-search input::placeholder {
+  color: #fff;
+}
+
+.quick-search input:hover::placeholder {
+  color: grey;
+}
+
+.quick-search svg {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  cursor: text;
+}
+
+.quick-search input:hover + svg {
+  color: grey;
 }
 
 .productivity-btn {
   gap: 5px;
+  width: 66px;
+  height: 32px;
+}
+
+.add-task-btn,
+.help-btn,
+.notification-btn {
+  width: 32px;
+  height: 32px;
 }
 
 .productivity-btn .count {
