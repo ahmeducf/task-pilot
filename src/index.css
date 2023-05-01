@@ -158,9 +158,9 @@ header button:hover {
   height: 32px;
 }
 
-.add-task-btn,
-.help-btn,
-.notification-btn {
+header .add-task-btn,
+header .help-btn,
+header .notification-btn {
   width: 32px;
   height: 32px;
 }
@@ -325,4 +325,91 @@ li.main-filters-list__item:nth-of-type(2) span.count {
 
 .toggle-list-btn.active svg {
   transform: rotate(90deg);
+}
+
+/* Content Section */
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Project-Header Section */
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 16px 0 16px;
+  height: 72px;
+}
+
+.project-header .project-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-black);
+  padding: 2px 4px;
+  border-radius: var(--border-radius-sm);
+}
+
+.project-header .project-title:hover {
+  background-color: var(--color-item-bg-hover);
+}
+
+.project-header .controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.project-header .controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--icon-color);
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 1px 4px 1px 0;
+  transition: var(--transition);
+}
+
+.project-header .controls button.add-task-btn {
+  gap: 6px;
+  font-size: 13px;
+}
+
+.project-header .controls button.add-task-btn:hover {
+  background-color: transparent;
+}
+
+.project-header .controls button.add-task-btn span.add-icon {
+  color: var(--color-primary);
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-header .controls button.add-task-btn:hover span.add-icon {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.project-header .controls button.add-task-btn:hover span.btn-text {
+  color: var(--color-primary);
+}
+
+.project-header .controls button:hover {
+  color: var(--icon-color-hover);
+  background-color: var(--color-item-bg-hover);
+}
+
+/* Tasks Flex View */
+
+.flex-view-width {
+  width: 75%;
 }
