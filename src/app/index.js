@@ -1,6 +1,8 @@
 import Project from './project';
 import Task from './task';
 
+import storage from './storage';
+
 const projects = [];
 const inbox = Project({ title: 'Inbox' });
 
@@ -117,6 +119,30 @@ const toJSON = () => ({
   projects: projects.map((project) => project.toJSON()),
 });
 
+const setProjects = (projectsData) => {
+  projectsData.forEach((projectData) => {
+    projects.addProject(projectData);
+  });
+};
+
+const setInbox = (inboxData) => {
+  inboxData.tasks.forEach((task) => {
+    if (!task.projectID) {
+      const inboxTask = new Task(task);
+
+      inbox.addTask(inboxTask);
+    }
+  });
+};
+
+const load = () => {
+  const allProjects = storage.get('projects') ?? { projects: [] };
+  const inboxProject = storage.get('inbox') ?? { tasks: [] };
+
+  setProjects(allProjects.projects);
+  setInbox(inboxProject);
+};
+
 export default {
   getProjects,
   getInboxTasks,
@@ -140,4 +166,5 @@ export default {
   removeTask,
   updateTask,
   toJSON,
+  load,
 };
