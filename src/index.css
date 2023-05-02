@@ -423,6 +423,7 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   display: flex;
   flex-direction: column;
   padding-bottom: 84px;
+  cursor: pointer;
 }
 
 .tasks-list .tasks-list-item {
@@ -433,6 +434,20 @@ li.main-filters-list__item:nth-of-type(2) span.count {
 /** Task Item Handle **/
 .tasks-list-item__handle {
   margin-top: 8px;
+  cursor: move;
+}
+
+.tasks-list-item__handle button {
+  color: var(--icon-color);
+  border-radius: 3px;
+  width: 27px;
+  height: 27px;
+  cursor: move;
+}
+
+.tasks-list-item__handle button:hover {
+  color: var(--icon-color-hover);
+  background-color: var(--color-item-bg-hover);
 }
 
 /** Task Item Checkbox **/
