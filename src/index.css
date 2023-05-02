@@ -434,6 +434,12 @@ li.main-filters-list__item:nth-of-type(2) span.count {
 .tasks-list-item__handle {
   margin-top: 8px;
   cursor: move;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.tasks-list-item:hover .tasks-list-item__handle {
+  opacity: 1;
 }
 
 .tasks-list-item__handle button {
@@ -518,6 +524,12 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   display: flex;
   align-items: center;
   gap: 8px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.tasks-list-item:hover .task-name-controls__task-controls {
+  opacity: 1;
 }
 
 .task-name-controls__task-controls button {
