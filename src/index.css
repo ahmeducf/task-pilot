@@ -353,6 +353,7 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   justify-content: space-between;
   padding: 36px 16px 8px 16px;
   height: 72px;
+  margin-bottom: 8px;
 }
 
 .project-header .project-title {
