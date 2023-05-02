@@ -60,4 +60,4 @@ const readFromLocalStorage = (key) => {
 
 const readFromStorage = (key) => readFromLocalStorage(key);
 
-export { writeToStorage, readFromStorage };
+export default { writeToStorage, readFromStorage };
