@@ -25,20 +25,24 @@ function storageAvailable(type) {
   }
 }
 
+function isJSON(obj) {
+  return (
+    obj !== undefined && obj !== null && obj.constructor === {}.constructor
+  );
+}
+
 const writeToLocalStorage = (key, value) => {
   if (
     !storageAvailable('localStorage') ||
     !key ||
-    !value ||
-    !value.length ||
     !key.length ||
     !(key instanceof String) ||
-    !(value instanceof String)
+    !isJSON(value)
   ) {
     return false;
   }
 
-  window.localStorage.setItem(key, value);
+  window.localStorage.setItem(key, JSON.stringify(value));
 
   return true;
 };
@@ -55,7 +59,7 @@ const readFromLocalStorage = (key) => {
     return null;
   }
 
-  return window.localStorage.getItem(key);
+  return JSON.parse(window.localStorage.getItem(key));
 };
 
 const get = (key) => readFromLocalStorage(key);
