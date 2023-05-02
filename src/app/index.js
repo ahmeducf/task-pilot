@@ -1,7 +1,8 @@
 import Project from './project';
 import Task from './task';
-
 import storage from './storage';
+import pubsub from './pubsub';
+import { LOAD } from './pubsub/events-types';
 
 const projects = [];
 const inbox = Project({ title: 'Inbox' });
@@ -143,28 +144,14 @@ const load = () => {
   setInbox(inboxProject);
 };
 
+const subscribeToEvents = () => {
+  pubsub.subscribe(LOAD, load);
+};
+
+const init = () => {
+  subscribeToEvents();
+};
+
 export default {
-  getProjects,
-  getInboxTasks,
-  getNonInboxTasks,
-  getProject,
-  addProject,
-  removeProject,
-  getAllTasks,
-  getFavoriteProjects,
-  getTodayTasks,
-  getUpcomingTasks,
-  getOverdueTasks,
-  getCompletedTasks,
-  getTasksByLabel,
-  getTasksByPriority,
-  getTasksByProject,
-  getTasksByDueDate,
-  getLabels,
-  getTask,
-  addTask,
-  removeTask,
-  updateTask,
-  toJSON,
-  load,
+  init,
 };
