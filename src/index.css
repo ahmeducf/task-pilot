@@ -428,7 +428,6 @@ li.main-filters-list__item:nth-of-type(2) span.count {
 
 .tasks-list .tasks-list-item {
   display: flex;
-  border-bottom: 1px solid var(--color-item-border);
 }
 
 /** Task Item Handle **/
@@ -443,6 +442,14 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   width: 27px;
   height: 27px;
   cursor: move;
+}
+
+/* Task Item Wrapper {Checkbox, content, controls} */
+
+.tasks-list-item .wrapper {
+  flex: 1;
+  display: flex;
+  border-bottom: 1px solid var(--color-item-border);
 }
 
 .tasks-list-item__handle button:hover {
