@@ -43,7 +43,7 @@ const writeToLocalStorage = (key, value) => {
   return true;
 };
 
-const writeToStorage = (key, value) => writeToLocalStorage(key, value);
+const set = (key, value) => writeToLocalStorage(key, value);
 
 const readFromLocalStorage = (key) => {
   if (
@@ -58,6 +58,6 @@ const readFromLocalStorage = (key) => {
   return window.localStorage.getItem(key);
 };
 
-const readFromStorage = (key) => readFromLocalStorage(key);
+const get = (key) => readFromLocalStorage(key);
 
-export default { writeToStorage, readFromStorage };
+export default { set, get };
