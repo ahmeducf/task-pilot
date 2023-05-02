@@ -478,6 +478,8 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   padding-bottom: 4px;
 }
 
+/*** Task Item Name ***/
+
 .task-name-controls__task-name {
   flex: 1;
   font-size: 14px;
@@ -486,6 +488,28 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   word-break: break-word;
   color: var(--color-black);
   overflow: hidden;
+}
+
+/*** Task Item Controls ***/
+
+.task-name-controls__task-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-name-controls__task-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.task-name-controls__task-controls button:hover {
+  color: var(--icon-color-hover);
+  background-color: var(--color-item-bg-hover);
 }
 
 .content-wrapper__task-description {
