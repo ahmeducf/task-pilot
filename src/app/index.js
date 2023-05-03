@@ -144,12 +144,10 @@ const load = () => {
   setInbox(inboxProject);
 };
 
-const subscribeToEvents = () => {
-  pubsub.subscribe(LOAD, load);
-};
-
 const init = () => {
-  subscribeToEvents();
+  load();
+
+  pubsub.publish(LOAD, { projects, inbox });
 };
 
 export default {
