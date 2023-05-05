@@ -11,10 +11,11 @@ const PRIORITY = {
 
 const LAYOUT = {
   LIST: 'LIST',
-  BOARD: 'BOARD',
+  GRID: 'GRID',
 };
 
 const SORT = {
+  DEFAULT: 'DEFAULT',
   DUE_DATE: 'DUE_DATE',
   PRIORITY: 'PRIORITY',
   TITLE: 'TITLE',
