@@ -1,4 +1,10 @@
 export const LOAD = Symbol('LOAD');
+
+export const INBOX_FILTER_CLICKED = 'main-filters-inbox:clicked';
+export const TODAY_FILTER_CLICKED = 'main-filters-today:clicked';
+export const UPCOMING_FILTER_CLICKED = 'main-filters-upcoming:clicked';
+export const FILTERS_FILTER_CLICKED = 'main-filters-filters:clicked';
+
 export const SAVE = Symbol('SAVE');
 export const ADD_PROJECT = Symbol('ADD_PROJECT');
 export const REMOVE_PROJECT = Symbol('REMOVE_PROJECT');

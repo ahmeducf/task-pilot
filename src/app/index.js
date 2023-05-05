@@ -173,6 +173,35 @@ const load = () => {
   setTodayView(todayView);
 };
 
+const app = {
+  getProjects,
+  getInbox,
+  getFavoriteProjects,
+  getProject,
+  addProject,
+  removeProject,
+  getAllTasks,
+  getInboxTasks,
+  getInboxTasksCount,
+  getNonInboxTasks,
+  getTodayTasks,
+  getTodayTasksCount,
+  getUpcomingTasks,
+  getOverdueTasks,
+  getCompletedTasks,
+  getTasksByLabel,
+  getLabels,
+  getTasksByPriority,
+  getTasksByProject,
+  getTasksByDueDate,
+  getTask,
+  addTask,
+  removeTask,
+  updateTask,
+  toJSON,
+  getTodayView,
+};
+
 const init = () => {
   inbox.addTask(
     Task({
@@ -211,15 +240,7 @@ const init = () => {
 
   load();
 
-  pubsub.publish(LOAD, {
-    getTodayTasks,
-    getOverdueTasks,
-    getTodayView,
-    getProjects,
-    getFavoriteProjects,
-    getInboxTasksCount,
-    getTodayTasksCount,
-  });
+  pubsub.publish(LOAD, app);
 };
 
 export default {

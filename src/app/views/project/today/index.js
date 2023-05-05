@@ -3,28 +3,28 @@ import OverdueSection from '../overdue-section';
 import DaySection from '../day-section';
 import { LAYOUT } from '../../../constants';
 
-const TodayView = (data) => {
+const TodayView = (app) => {
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
 
-  const header = Header(data.getTodayView());
+  const header = Header(app.getTodayView());
 
   const tasks = document.createElement('div');
   tasks.classList.add('tasks');
-  if (data.getTodayView().getLayout() === LAYOUT.GRID) {
+  if (app.getTodayView().getLayout() === LAYOUT.GRID) {
     tasks.classList.add('grid-layout');
-  } else if (data.getTodayView().getLayout() === LAYOUT.LIST) {
+  } else if (app.getTodayView().getLayout() === LAYOUT.LIST) {
     tasks.classList.add('flex-layout');
   }
 
   const overdue = OverdueSection({
-    getOverdueTasks: data.getOverdueTasks,
-    getProjectView: data.getTodayView,
+    getOverdueTasks: app.getOverdueTasks,
+    getProjectView: app.getTodayView,
   });
   const today = DaySection({
     date: new Date(),
-    projectView: data.getTodayView(),
-    tasks: data.getTodayTasks(),
+    projectView: app.getTodayView(),
+    tasks: app.getTodayTasks(),
   });
 
   contentSection.appendChild(header);
