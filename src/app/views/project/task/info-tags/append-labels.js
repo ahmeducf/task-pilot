@@ -20,3 +20,5 @@ const appendLabels = (task, taskInfoTagsDiv) => {
     taskInfoTagsDiv.appendChild(labelDiv);
   });
 };
+
+export default appendLabels;
