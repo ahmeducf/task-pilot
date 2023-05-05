@@ -1,8 +1,9 @@
 import Item from '../item';
 
-const render = ({ favoriteProjects }) => {
+const render = (app) => {
   const favoritesContainer = document.querySelector('.favorites');
   const favoritesList = favoritesContainer.querySelector('.favorites-list');
+  const favoriteProjects = app.getFavoriteProjects();
 
   if (favoriteProjects.length === 0) {
     favoritesContainer.classList.add('hidden');

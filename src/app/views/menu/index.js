@@ -2,15 +2,12 @@ import renderMainFilters from './main-filters';
 import renderFavorites from './favorites';
 import renderProjects from './projects';
 
-const render = (data) => {
-  renderMainFilters({
-    inboxCount: data.getInboxTasksCount(),
-    todayCount: data.getTodayTasksCount(),
-  });
+const render = (app) => {
+  renderMainFilters(app);
 
-  renderFavorites({ favoriteProjects: data.getFavoriteProjects() });
+  renderFavorites(app);
 
-  renderProjects({ projects: data.getProjects() });
+  renderProjects(app);
 };
 
 export default render;
