@@ -3,9 +3,29 @@ import Task from './task';
 import storage from './storage';
 import pubsub from './pubsub';
 import { LOAD } from './pubsub/events-types';
+import View from './project/view';
+import { LAYOUT, ORDERING, SORT } from './constants';
 
 const projects = [];
 const inbox = Project({ title: 'Inbox' });
+const today = View({
+  layout: LAYOUT.LIST,
+  sort: {
+    sortBy: SORT.DEFAULT,
+    ordering: 'ASC',
+  },
+});
+
+inbox.addTask(
+  Task({
+    title: 'Welcome to Task Pilot!',
+    description:
+      'This is your inbox. Tasks can be organized into projects, and you can also add labels and filters.',
+    dueDate: new Date('2023-01-01'),
+    priority: 'P3',
+    labels: ['Welcome'],
+  })
+);
 
 const getProjects = () => projects;
 
@@ -136,18 +156,30 @@ const setInbox = (inboxData) => {
   });
 };
 
+const setTodayView = (todayView) => {
+  today.setLayout(todayView.layout);
+  today.setSort(todayView.sort);
+};
+
+const getTodayView = () => today;
+
 const load = () => {
   const allProjects = storage.get('projects') ?? { projects: [] };
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
+  const todayView = storage.get('todayView') ?? {
+    layout: LAYOUT.GRID,
+    sort: { sortBy: SORT.DEFAULT, ordering: ORDERING.ASC },
+  };
 
   setProjects(allProjects.projects);
   setInbox(inboxProject);
+  setTodayView(todayView);
 };
 
 const init = () => {
   load();
 
-  pubsub.publish(LOAD, { projects, inbox });
+  pubsub.publish(LOAD, { getTodayTasks, getOverdueTasks, getTodayView });
 };
 
 export default {
