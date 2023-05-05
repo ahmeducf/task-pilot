@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
 import abstractHeader from '../abstract-header';
 
-const todayHeader = () => {
-  const header = abstractHeader();
+const todayHeader = (todayView) => {
+  const header = abstractHeader(todayView);
 
   const title = header.querySelector('.project-title');
   const todayDateSpan = document.createElement('small');
