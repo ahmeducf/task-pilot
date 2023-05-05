@@ -1,5 +1,6 @@
-import Item from './item';
 import renderMainFilters from './main-filters';
+import renderFavorites from './favorites';
+import renderProjects from './projects';
 
 const render = (data) => {
   renderMainFilters({
@@ -7,32 +8,9 @@ const render = (data) => {
     todayCount: data.getTodayTasksCount(),
   });
 
-  const projects = data.getProjects();
-  const favoriteProjects = data.getFavoriteProjects();
+  renderFavorites({ favoriteProjects: data.getFavoriteProjects() });
 
-  const favoritesContainer = document.querySelector('.favorites');
-  const favoritesList = favoritesContainer.querySelector('.favorites-list');
-
-  if (favoriteProjects.length === 0) {
-    favoritesContainer.classList.add('hidden');
-  } else {
-    favoritesContainer.classList.remove('hidden');
-
-    favoriteProjects.forEach((project) => {
-      const item = Item({ item: project });
-
-      favoritesList.appendChild(item);
-    });
-  }
-
-  const projectsContainer = document.querySelector('.projects');
-  const projectsList = projectsContainer.querySelector('.projects-list');
-
-  projects.forEach((project) => {
-    const item = Item({ item: project });
-
-    projectsList.appendChild(item);
-  });
+  renderProjects({ projects: data.getProjects() });
 };
 
 export default render;
