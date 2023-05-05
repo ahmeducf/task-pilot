@@ -34,6 +34,8 @@ const Project = (state = {}) => {
 
   const getTasks = () => tasks;
 
+  const getTasksCount = () => tasks.length;
+
   const addTask = (task) => {
     tasks.push(task);
   };
@@ -77,6 +79,7 @@ const Project = (state = {}) => {
     getColor,
     setColor,
     getTasks,
+    getTasksCount,
     addTask,
     removeTask,
     updateTask,

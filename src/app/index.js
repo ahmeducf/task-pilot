@@ -16,40 +16,9 @@ const today = View({
   },
 });
 
-inbox.addTask(
-  Task({
-    title: 'Welcome to Task Pilot!',
-    description:
-      'This is your inbox. Tasks can be organized into projects, and you can also add labels and filters.',
-    dueDate: new Date('2023-01-01'),
-    priority: 'P3',
-    labels: ['Welcome'],
-  })
-);
-
-inbox.addTask(
-  Task({
-    title: 'Create a new project',
-    description:
-      'Projects are a great way to organize your tasks. You can create as many projects as you want.',
-    dueDate: new Date(),
-    priority: 'P2',
-    labels: ['Welcome'],
-  })
-);
-
-inbox.addTask(
-  Task({
-    title: 'Add a new task',
-    description:
-      'Tasks can be added to projects or to your inbox. You can also add labels and due dates to your tasks.',
-    dueDate: new Date(),
-    priority: 'P1',
-    labels: ['Welcome'],
-  })
-);
-
 const getProjects = () => projects;
+
+const getInbox = () => inbox;
 
 const getFavoriteProjects = () =>
   projects.filter((project) => project.isFavorite());
@@ -78,11 +47,17 @@ const getAllTasks = () =>
 
 const getInboxTasks = () => inbox.getTasks();
 
+const getInboxTasksCount = () => inbox.getTasksCount();
+
 const getNonInboxTasks = () =>
   projects.reduce((tasks, project) => tasks.concat(project.getTasks()), []);
 
 const getTodayTasks = () =>
   getAllTasks().filter((task) => task.dueDateIsToday() && !task.isCompleted());
+
+const getTodayTasksCount = () =>
+  getAllTasks().filter((task) => task.dueDateIsToday() && !task.isCompleted())
+    .length;
 
 const getUpcomingTasks = () =>
   getAllTasks()
@@ -199,9 +174,52 @@ const load = () => {
 };
 
 const init = () => {
+  inbox.addTask(
+    Task({
+      title: 'Welcome to Task Pilot!',
+      description:
+        'This is your inbox. Tasks can be organized into projects, and you can also add labels and filters.',
+      dueDate: new Date('2023-01-01'),
+      priority: 'P3',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Create a new project',
+      description:
+        'Projects are a great way to organize your tasks. You can create as many projects as you want.',
+      dueDate: new Date(),
+      priority: 'P2',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Add a new task',
+      description:
+        'Tasks can be added to projects or to your inbox. You can also add labels and due dates to your tasks.',
+      dueDate: new Date(),
+      priority: 'P1',
+      labels: ['Welcome'],
+    })
+  );
+
+  addProject({ title: 'project 1', favorite: true });
+
   load();
 
-  pubsub.publish(LOAD, { getTodayTasks, getOverdueTasks, getTodayView });
+  pubsub.publish(LOAD, {
+    getTodayTasks,
+    getOverdueTasks,
+    getTodayView,
+    getProjects,
+    getFavoriteProjects,
+    getInboxTasksCount,
+    getTodayTasksCount,
+  });
 };
 
 export default {

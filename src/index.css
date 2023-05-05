@@ -205,6 +205,10 @@ main {
   padding-top: 32px;
 }
 
+.favorites.hidden {
+  display: none;
+}
+
 ul.main-filters-list,
 ul.favorites-list,
 ul.projects-list {
@@ -213,8 +217,7 @@ ul.projects-list {
 }
 
 li.main-filters-list__item,
-li.favorites-list__item,
-li.projects-list__item {
+li.menu__item {
   height: 34px;
   cursor: pointer;
   display: flex;
@@ -225,20 +228,17 @@ li.projects-list__item {
 }
 
 li.main-filters-list__item:hover,
-li.favorites-list__item:hover,
-li.projects-list__item:hover {
+li.menu__item:hover {
   background-color: var(--color-item-bg-hover);
 }
 
 li.main-filters-list__item.active,
-li.favorites-list__item.active,
-li.projects-list__item.active {
+li.menu__item.active {
   background-color: var(--color-item-bg-active);
 }
 
 li.main-filters-list__item button,
-li.favorites-list__item button,
-li.projects-list__item button {
+li.menu__item button {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -290,7 +290,7 @@ button .actions-count-wrapper,
   height: 100%;
 }
 
-li.favorites-list__item:hover .actions-menu-icon,
+li.menu__item:hover .actions-menu-icon,
 li.projects-list__item:hover .actions-menu-icon {
   display: block;
 }
@@ -304,8 +304,7 @@ span.count {
   color: #aaa;
 }
 
-li.favorites-list__item:hover span.count,
-li.projects-list__item:hover span.count {
+li.menu__item:hover span.count {
   display: none;
 }
 
