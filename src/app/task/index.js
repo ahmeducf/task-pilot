@@ -87,8 +87,7 @@ const Task = (state = {}) => {
 
   const isOverdue = () => {
     const today = new Date();
-
-    return isAfter(today, dueDate);
+    return !completed && isAfter(today, dueDate) && !dueDateIsToday();
   };
 
   /* Returns a JSON representation of the task. */

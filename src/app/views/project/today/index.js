@@ -21,7 +21,11 @@ const TodayView = (data) => {
     getOverdueTasks: data.getOverdueTasks,
     getProjectView: data.getTodayView,
   });
-  const today = DaySection(data.getTodayTasks());
+  const today = DaySection({
+    date: new Date(),
+    projectView: data.getTodayView(),
+    tasks: data.getTodayTasks(),
+  });
 
   contentSection.appendChild(header);
   contentSection.appendChild(tasks);

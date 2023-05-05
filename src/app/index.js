@@ -27,6 +27,17 @@ inbox.addTask(
   })
 );
 
+inbox.addTask(
+  Task({
+    title: 'Create a new project',
+    description:
+      'Projects are a great way to organize your tasks. You can create as many projects as you want.',
+    dueDate: new Date(),
+    priority: 'P2',
+    labels: ['Welcome'],
+  })
+);
+
 const getProjects = () => projects;
 
 const getFavoriteProjects = () =>
@@ -167,7 +178,7 @@ const load = () => {
   const allProjects = storage.get('projects') ?? { projects: [] };
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
   const todayView = storage.get('todayView') ?? {
-    layout: LAYOUT.GRID,
+    layout: LAYOUT.LIST,
     sort: { sortBy: SORT.DEFAULT, ordering: ORDERING.ASC },
   };
 
