@@ -6,6 +6,17 @@ const renderItemCount = (item, tasksCount) => {
   countSpan.textContent = tasksCount;
 };
 
+const activateItem = (item) => {
+  const allMenuItems = [
+    ...document.querySelectorAll('.main-filters-list__item'),
+    ...document.querySelectorAll('.menu__item'),
+  ];
+  allMenuItems.forEach((menuItem) => {
+    menuItem.classList.remove('active');
+  });
+  item.classList.add('active');
+};
+
 const render = (app) => {
   renderItemCount('inbox', app.getInboxTasksCount());
   renderItemCount('today', app.getTodayTasksCount());
@@ -14,6 +25,7 @@ const render = (app) => {
   listItems.forEach((listItem) => {
     listItem.addEventListener('click', () => {
       pubsub.publish(`main-filters-${listItem.dataset.filter}:clicked`, app);
+      activateItem(listItem);
     });
   });
 };

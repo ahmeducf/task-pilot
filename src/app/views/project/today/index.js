@@ -7,7 +7,7 @@ const TodayView = (app) => {
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
 
-  const header = Header(app.getTodayView());
+  const header = Header(app);
 
   const tasks = document.createElement('div');
   tasks.classList.add('tasks');

@@ -573,6 +573,10 @@ li.main-filters-list__item:nth-of-type(2) span.count {
 
 /* Tasks List */
 
+ul.tasks-list {
+  width: 100%;
+}
+
 .tasks-list .tasks-list-item {
   display: flex;
 }

@@ -158,13 +158,15 @@ const setTodayView = (todayView) => {
   today.setSort(todayView.sort);
 };
 
+const getInboxView = () => inbox.getView();
+
 const getTodayView = () => today;
 
 const load = () => {
   const allProjects = storage.get('projects') ?? { projects: [] };
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
   const todayView = storage.get('todayView') ?? {
-    layout: LAYOUT.GRID,
+    layout: LAYOUT.LIST,
     sort: { sortBy: SORT.DEFAULT, ordering: ORDERING.ASC },
   };
 
@@ -198,8 +200,9 @@ const app = {
   addTask,
   removeTask,
   updateTask,
-  toJSON,
+  getInboxView,
   getTodayView,
+  toJSON,
 };
 
 const init = () => {
