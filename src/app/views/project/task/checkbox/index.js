@@ -1,4 +1,6 @@
-const checkBoxCircle = (task) => {
+const CheckBox = (task) => {
+  const taskCheckbox = document.createElement('div');
+  taskCheckbox.classList.add('tasks-list-item__checkbox');
   const controlBtn = document.createElement('button');
   controlBtn.classList.add(
     'checkbox-circle',
@@ -11,7 +13,8 @@ const checkBoxCircle = (task) => {
                       ></path>
                     </svg>`;
 
-  return controlBtn;
+  taskCheckbox.appendChild(controlBtn);
+  return taskCheckbox;
 };
 
-export default checkBoxCircle;
+export default CheckBox;
