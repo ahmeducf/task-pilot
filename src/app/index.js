@@ -38,6 +38,17 @@ inbox.addTask(
   })
 );
 
+inbox.addTask(
+  Task({
+    title: 'Add a new task',
+    description:
+      'Tasks can be added to projects or to your inbox. You can also add labels and due dates to your tasks.',
+    dueDate: new Date(),
+    priority: 'P1',
+    labels: ['Welcome'],
+  })
+);
+
 const getProjects = () => projects;
 
 const getFavoriteProjects = () =>

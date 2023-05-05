@@ -1,11 +1,11 @@
-import { editTask, moveTask, deleteTask } from './control';
+import { editTask, moveTask, deleteTask, Control } from './control';
 
 const ControlList = () => {
   const taskControls = document.createElement('div');
   taskControls.classList.add('task-name-controls__task-controls');
-  taskControls.appendChild(editTask);
-  taskControls.appendChild(moveTask);
-  taskControls.appendChild(deleteTask);
+  taskControls.appendChild(Control(editTask));
+  taskControls.appendChild(Control(moveTask));
+  taskControls.appendChild(Control(deleteTask));
 
   return taskControls;
 };

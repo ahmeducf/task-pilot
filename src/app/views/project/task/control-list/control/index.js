@@ -9,7 +9,7 @@ const Control = (data) => {
   return controlBtn;
 };
 
-const editTaskControlData = {
+const editTask = {
   title: 'edit-task',
   icon: `<svg width="24" height="24">
                           <g fill="none" fill-rule="evenodd">
@@ -25,7 +25,7 @@ const editTaskControlData = {
                         </svg>`,
 };
 
-const moveTaskControlData = {
+const moveTask = {
   title: 'move-task-to-project',
   icon: `<svg width="24" height="24">
                           <g fill="none" transform="translate(4 4)">
@@ -43,7 +43,7 @@ const moveTaskControlData = {
                         </svg>`,
 };
 
-const deleteTaskControlData = {
+const deleteTask = {
   title: 'delete-task',
   icon: `<svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -72,19 +72,4 @@ const deleteTaskControlData = {
                         </svg>`,
 };
 
-const checkCompletedControlData = {
-  title: 'checkbox-circle',
-  icon: `<svg>
-                      <path
-                        fill="currentColor"
-                        d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"
-                      ></path>
-                    </svg>`,
-};
-
-const editTask = Control(editTaskControlData);
-const moveTask = Control(moveTaskControlData);
-const deleteTask = Control(deleteTaskControlData);
-const checkCompleted = Control(checkCompletedControlData);
-
-export { editTask, moveTask, deleteTask, checkCompleted };
+export { editTask, moveTask, deleteTask, Control };
