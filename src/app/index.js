@@ -189,7 +189,7 @@ const load = () => {
   const allProjects = storage.get('projects') ?? { projects: [] };
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
   const todayView = storage.get('todayView') ?? {
-    layout: LAYOUT.LIST,
+    layout: LAYOUT.GRID,
     sort: { sortBy: SORT.DEFAULT, ordering: ORDERING.ASC },
   };
 

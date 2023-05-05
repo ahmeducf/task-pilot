@@ -12,7 +12,7 @@ const OverdueSection = (data) => {
   overdueHeader.classList.add('overdue__header');
 
   const toggleBtn = document.createElement('button');
-  toggleBtn.classList.add('overdue__toggle-btn');
+  toggleBtn.classList.add('overdue__toggle-btn', 'active');
   toggleBtn.innerHTML =
     '<svg width="24" height="24"><path fill="none" stroke="currentColor" d="M16 10l-4 4-4-4"></path></svg>';
 
@@ -21,7 +21,7 @@ const OverdueSection = (data) => {
   overdueTitle.textContent = 'Overdue';
 
   const overdueTasks = document.createElement('div');
-  overdueTasks.classList.add('overdue__tasks');
+  overdueTasks.classList.add('overdue__tasks', 'overdue--collapsed');
 
   const tasksList = document.createElement('ul');
   tasksList.classList.add('tasks-list');
@@ -40,6 +40,11 @@ const OverdueSection = (data) => {
   tasks.forEach((task) => {
     const taskItem = Task({ task, projectView });
     tasksList.appendChild(taskItem);
+  });
+
+  toggleBtn.addEventListener('click', () => {
+    toggleBtn.classList.toggle('active');
+    overdueTasks.classList.toggle('overdue--collapsed');
   });
 
   return overdueSection;

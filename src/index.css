@@ -530,6 +530,10 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   margin-top: 24px;
 }
 
+.overdue--collapsed {
+  display: none;
+}
+
 .day__header,
 .overdue__header {
   display: flex;
@@ -543,6 +547,10 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   color: var(--icon-color);
   border-radius: 3px;
   transition: var(--transition);
+}
+
+.overdue__header button.active svg {
+  transform: rotate(-90deg);
 }
 
 .overdue__header button:hover {
