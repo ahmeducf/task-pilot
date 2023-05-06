@@ -876,5 +876,71 @@
         </div>
       </section>
     </main>
+    <div class="modal-overlay">
+      <div class="project-modal">
+        <header class="modal-header">Add project</header>
+        <form class="project-modal__form">
+          <div class="form-field">
+            <label for="project-name">Name</label>
+            <input type="text" id="project-name" name="project-name" />
+          </div>
+          <div class="form-field">
+            <label for="project-color">Color</label>
+            <div class="color-picker">
+              <input
+                type="color"
+                id="project-color"
+                name="project-color"
+                value="#808080"
+              />
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="favorite-switch">
+              <input type="checkbox" name="is_favorite" id="is_favorite" />
+              <span class="switch-handle"></span>
+            </div>
+            <label for="is_favorite">Add to favorites</label>
+          </div>
+          <div class="form-field">
+            <label for="project-view">View</label>
+            <div class="view-radio-group">
+              <label for="list" class="view-radio-option">
+                <div class="list-preview"></div>
+                <div class="option">
+                  <button type="button" class="checkbox-circle checked">
+                    <svg>
+                      <path
+                        fill="currentColor"
+                        d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <label for="list">List</label>
+                </div>
+              </label>
+              <label for="board" class="view-radio-option">
+                <div class="board-preview"></div>
+                <div class="option">
+                  <button type="button" class="checkbox-circle">
+                    <svg>
+                      <path
+                        fill="currentColor"
+                        d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <label for="board">Board</label>
+                </div>
+              </label>
+            </div>
+          </div>
+        </form>
+        <footer class="modal-footer">
+          <button class="btn-cancel">Cancel</button>
+          <button class="btn-submit">Add</button>
+        </footer>
+      </div>
+    </div>
   </body>
 </html>

@@ -814,3 +814,221 @@ ul.tasks-list {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Add-project Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-modal {
+  width: 450px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+}
+
+/* Project-modal Header/Footer */
+.project-modal .modal-header,
+.project-modal .modal-footer {
+  width: 100%;
+  height: 49px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  color: #202020;
+  background-color: var(--color-white);
+}
+
+.project-modal .modal-header {
+  border-bottom: 1px solid var(--color-item-border);
+  font-size: 20px;
+  font-weight: 700;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
+}
+
+.project-modal .modal-footer {
+  border-top: 1px solid var(--color-item-border);
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+/* Project-modal Form */
+
+.project-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: auto;
+  margin: 16px;
+  max-height: 420px;
+}
+
+.project-modal__form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0 4px;
+}
+
+.form-field:nth-of-type(1) > label,
+.form-field:nth-of-type(2) > label,
+.form-field:nth-of-type(4) > label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #202020;
+}
+
+.form-field input {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-field input:focus {
+  box-shadow: 0 0 0 1px #1f60c2, 0 0 0 4px #dceaff;
+}
+
+/* Name Form Field */
+
+.form-field:nth-of-type(1) input {
+  padding: 5px;
+}
+
+/* Color Picker Form Field */
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
+
+.color-picker img {
+  position: absolute;
+}
+
+.color-picker input[type='color'] {
+  flex: 1;
+  height: 30px;
+  cursor: pointer;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+  outline: none;
+  border: 5px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input[type='color']::-moz-color-swatch {
+  outline: none;
+  border-radius: var(--border-radius-sm);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Add-to-favorites Form Field */
+
+.form-field:nth-of-type(3) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Project-view Form Field */
+
+.view-radio-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-radio-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.view-radio-option .list-preview,
+.view-radio-option .board-preview {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-radio-option .list-preview {
+  background-image: url(./assets/list-preview.svg);
+  background-position: 0 10px;
+}
+
+.view-radio-option:hover .list-preview {
+  background-image: url(./assets/list-preview-hover.svg);
+  border: 1px solid grey;
+}
+
+.view-radio-option .board-preview {
+  background-image: url(./assets/board-preview.svg);
+  background-position: 5px 5px;
+}
+
+.view-radio-option:hover .board-preview {
+  background-image: url(./assets/board-preview-hover.svg);
+  border: 1px solid grey;
+}
+
+.view-radio-option .option {
+  display: flex;
+  gap: 12px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.option label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #202020;
+}
+
+.option .checkbox-circle {
+  border: 1px solid grey;
+  color: grey;
+  background-color: var(--color-p4-bg);
+  transition: transform 0.3s ease;
+}
+
+.option .checkbox-circle.checked {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: var(--color-primary);
+  transform: scale(1.2);
+}
+
+.option .checkbox-circle.checked svg {
+  opacity: 1;
+  color: var(--color-white);
+}
