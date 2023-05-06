@@ -216,6 +216,18 @@ ul.projects-list {
   flex-direction: column;
 }
 
+ul.favorites-list,
+ul.projects-list {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+ul.favorites-list {
+  max-height: 0;
+}
+
 li.main-filters-list__item,
 li.menu__item {
   height: 34px;
@@ -357,11 +369,11 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   background-color: var(--color-item-bg-hover);
 }
 
-.toggle-list-btn svg {
+.list-toggle-btn svg {
   transition: transform 0.2s ease-in-out;
 }
 
-.toggle-list-btn.active svg {
+.list-toggle-btn.active svg {
   transform: rotate(90deg);
 }
 

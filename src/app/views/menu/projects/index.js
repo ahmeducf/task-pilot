@@ -9,6 +9,7 @@ const render = (app) => {
 
     projectsList.appendChild(item);
   });
+  projectsList.style.maxHeight = `${projectsList.scrollHeight}px`;
 };
 
 export default render;
