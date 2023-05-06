@@ -882,7 +882,15 @@
         <form class="project-modal__form">
           <div class="form-field">
             <label for="project-name">Name</label>
-            <input type="text" id="project-name" name="project-name" />
+            <input
+              type="text"
+              id="project-name"
+              name="project-name"
+              autocomplete="on"
+              maxlength="120"
+              autofocus
+              required
+            />
           </div>
           <div class="form-field">
             <label for="project-color">Color</label>

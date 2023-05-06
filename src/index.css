@@ -1012,6 +1012,7 @@ input[type='color']::-moz-color-swatch {
   font-size: 14px;
   font-weight: 400;
   color: #202020;
+  cursor: pointer;
 }
 
 .option .checkbox-circle {
@@ -1028,6 +1029,12 @@ input[type='color']::-moz-color-swatch {
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
   opacity: 0;
+}
+
+.list-preview:hover + .option svg,
+.board-preview:hover + .option svg,
+.option:hover svg {
+  opacity: 1;
 }
 
 .option .checkbox-circle.checked svg {
