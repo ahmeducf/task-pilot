@@ -23,14 +23,14 @@ const DueDate = (task) => {
 
   if (task.dueDateIsToday()) {
     dueDateDiv.classList.add('due-date-today');
-    // tex content is in form 'Today'
+    // text content is in form 'Today'
     dueDateText.textContent = 'Today';
   } else if (task.dueDateIsTomorrow()) {
     dueDateDiv.classList.add('due-date-tomorrow');
     // text content is in form 'Tomorrow'
     dueDateText.textContent = 'Tomorrow';
-  } else if (task.dueDateIsThisWeek()) {
-    dueDateDiv.classList.add('due-date-this-week');
+  } else if (task.dueDateIsWithinNextWeek()) {
+    dueDateDiv.classList.add('due-date-within-next-week');
     // text content is in form 'Day of the week'
     dueDateText.textContent = format(task.getDueDate(), 'EEEE');
   } else if (task.dueDateIsUpcoming()) {

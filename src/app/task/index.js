@@ -1,7 +1,13 @@
 // This file contains the Task factory function, which represents a task in a to-do list.
 
 import { v4 as uuidv4 } from 'uuid';
-import { isAfter, isToday, isTomorrow, isThisWeek } from 'date-fns';
+import {
+  addWeeks,
+  isAfter,
+  isToday,
+  isTomorrow,
+  isWithinInterval,
+} from 'date-fns';
 import { PRIORITY } from '../constants';
 
 const Task = (state = {}) => {
@@ -77,7 +83,12 @@ const Task = (state = {}) => {
 
   const dueDateIsTomorrow = () => isTomorrow(dueDate);
 
-  const dueDateIsThisWeek = () => isThisWeek(dueDate);
+  const dueDateIsWithinNextWeek = () => {
+    const today = new Date();
+    const nextWeek = addWeeks(today, 1);
+
+    return isWithinInterval(dueDate, { start: today, end: nextWeek });
+  };
 
   const dueDateIsUpcoming = () => {
     const today = new Date();
@@ -125,7 +136,7 @@ const Task = (state = {}) => {
     setCreatedDate,
     dueDateIsToday,
     dueDateIsTomorrow,
-    dueDateIsThisWeek,
+    dueDateIsWithinNextWeek,
     dueDateIsUpcoming,
     isOverdue,
     toJSON,

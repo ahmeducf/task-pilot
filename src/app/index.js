@@ -1,3 +1,4 @@
+import { addDays, addMonths, addWeeks, endOfTomorrow, format } from 'date-fns';
 import Project from './project';
 import Task from './task';
 import storage from './storage';
@@ -9,6 +10,13 @@ import { LAYOUT, ORDERING, SORT } from './constants';
 const projects = [];
 const inbox = Project({ title: 'Inbox' });
 const today = View({
+  layout: LAYOUT.LIST,
+  sort: {
+    sortBy: SORT.DEFAULT,
+    ordering: 'ASC',
+  },
+});
+const upcoming = View({
   layout: LAYOUT.LIST,
   sort: {
     sortBy: SORT.DEFAULT,
@@ -63,6 +71,19 @@ const getUpcomingTasks = () =>
   getAllTasks()
     .filter((task) => task.dueDateIsUpcoming() && !task.isCompleted())
     .sort((a, b) => a.getDueDate() - b.getDueDate());
+
+const mapTasksByDueDate = (tasks) =>
+  tasks.reduce((map, task) => {
+    const dueDate = format(task.getDueDate(), 'yyyy-MM-dd');
+
+    if (!map.has(dueDate)) {
+      map.set(dueDate, []);
+    }
+
+    map.get(dueDate).push(task);
+
+    return map;
+  }, new Map());
 
 const getOverdueTasks = () =>
   getAllTasks().filter((task) => task.isOverdue() && !task.isCompleted());
@@ -162,6 +183,8 @@ const getInboxView = () => inbox.getView();
 
 const getTodayView = () => today;
 
+const getUpcomingView = () => upcoming;
+
 const load = () => {
   const allProjects = storage.get('projects') ?? { projects: [] };
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
@@ -202,6 +225,8 @@ const app = {
   updateTask,
   getInboxView,
   getTodayView,
+  getUpcomingView,
+  mapTasksByDueDate,
   toJSON,
 };
 
@@ -235,6 +260,50 @@ const init = () => {
         'Tasks can be added to projects or to your inbox. You can also add labels and due dates to your tasks.',
       dueDate: new Date(),
       priority: 'P1',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Add a new label',
+      description:
+        'Labels are a great way to organize your tasks. You can add as many labels as you want.',
+      dueDate: addMonths(new Date(), 1),
+      priority: 'P4',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Add a new filter',
+      description:
+        'Filters are a great way to organize your tasks. You can add as many filters as you want.',
+      dueDate: endOfTomorrow(),
+      priority: 'P1',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Add a new priority',
+      description:
+        'Priorities are a great way to organize your tasks. You can add as many priorities as you want.',
+      dueDate: addWeeks(new Date(), 1),
+      priority: 'P2',
+      labels: ['Welcome'],
+    })
+  );
+
+  inbox.addTask(
+    Task({
+      title: 'Add a new view',
+      description:
+        'Views are a great way to organize your tasks. You can add as many views as you want.',
+      dueDate: addDays(new Date(), 3),
+      priority: 'P3',
       labels: ['Welcome'],
     })
   );
