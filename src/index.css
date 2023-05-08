@@ -830,11 +830,20 @@ ul.tasks-list {
   justify-content: center;
 }
 
+.modal-overlay.hidden {
+  display: none;
+}
+
 .project-modal {
   width: 450px;
   background-color: var(--color-white);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.project-modal.hidden {
+  animation: fadeOut 0.2s ease-in-out forwards;
 }
 
 /* Project-modal Header/Footer */
@@ -1096,5 +1105,27 @@ input[type='color']::-moz-color-swatch {
     color: var(--color-primary);
     background-color: var(--color-primary);
     transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
   }
 }
