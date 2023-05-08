@@ -13,7 +13,7 @@ function renderProjectsList(projectsList, app) {
   });
 }
 const render = (app) => {
-  const projectsContainer = document.querySelector('.projects-container');
+  const projectsContainer = document.querySelector('.projects');
   const projectsList = projectsContainer.querySelector('.projects-list');
   const addProjectBtn = projectsContainer.querySelector('.add-project-btn');
 
