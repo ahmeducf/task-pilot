@@ -830,10 +830,6 @@ ul.tasks-list {
   justify-content: center;
 }
 
-.modal-overlay.hidden {
-  display: none;
-}
-
 .project-modal {
   width: 450px;
   background-color: var(--color-white);
@@ -1034,6 +1030,11 @@ input[type='color']::-moz-color-swatch {
   background-position: 0 10px;
 }
 
+.view-radio-option.checked .list-preview,
+.view-radio-option.checked .board-preview {
+  border-color: #dd4b39;
+}
+
 .view-radio-option:hover .list-preview {
   background-image: url(./assets/list-preview-hover.svg);
   border: 1px solid grey;
@@ -1069,11 +1070,11 @@ input[type='color']::-moz-color-swatch {
   background-color: var(--color-p4-bg);
 }
 
-.option .checkbox-circle.checked {
+.view-radio-option.checked .checkbox-circle {
   animation: popUpDown 0.3s ease forwards;
 }
 
-.option .checkbox-circle svg {
+.view-radio-option .checkbox-circle svg {
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
   opacity: 0;
@@ -1085,7 +1086,7 @@ input[type='color']::-moz-color-swatch {
   opacity: 1;
 }
 
-.option .checkbox-circle.checked svg {
+.view-radio-option.checked .checkbox-circle svg {
   opacity: 1;
   color: var(--color-white);
 }

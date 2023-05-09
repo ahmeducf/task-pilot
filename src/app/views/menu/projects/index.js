@@ -1,8 +1,9 @@
+import AddProjectModal from '../../modals/add-project';
 import Item from '../item';
 
-function toggleAddProjectModal() {
-  const modal = document.querySelector('.modal-overlay.add-project');
-  modal.classList.remove('hidden');
+function showAddProjectModal() {
+  const modal = AddProjectModal();
+  document.body.appendChild(modal);
 }
 
 function renderProjectsList(projectsList, app) {
@@ -19,7 +20,7 @@ const render = (app) => {
 
   renderProjectsList(projectsList, app);
 
-  addProjectBtn.addEventListener('click', toggleAddProjectModal);
+  addProjectBtn.addEventListener('click', showAddProjectModal);
 };
 
 export default render;
