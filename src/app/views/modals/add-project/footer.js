@@ -1,3 +1,16 @@
+import pubsub from '../../../pubsub';
+import { ADD_PROJECT } from '../../../pubsub/events-types';
+
+const hideModal = () => {
+  const modalOverlay = document.querySelector('.modal-overlay');
+  const modal = document.querySelector('.project-modal');
+
+  modal.classList.add('hidden');
+  modal.addEventListener('animationend', () => {
+    modalOverlay.remove();
+  });
+};
+
 const Footer = () => {
   const footer = document.createElement('footer');
   footer.classList.add('modal-footer');
@@ -15,14 +28,29 @@ const Footer = () => {
 
   footer.append(cancelBtn, submitBtn);
 
-  cancelBtn.addEventListener('click', () => {
-    const modalOverlay = document.querySelector('.modal-overlay');
-    const modal = document.querySelector('.project-modal');
+  cancelBtn.addEventListener('click', hideModal);
 
-    modal.classList.add('hidden');
-    modal.addEventListener('animationend', () => {
-      modalOverlay.remove();
-    });
+  submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideModal();
+
+    const title = document.querySelector('#project-name').value;
+    const color = document.querySelector('#project-color').value;
+    const isFavorite = document.querySelector('#is-favorite').checked;
+    const { layout } = document.querySelector(
+      '.view-radio-option.checked'
+    ).dataset;
+
+    const project = {
+      title,
+      color,
+      isFavorite,
+      view: {
+        layout: layout.toUpperCase(),
+      },
+    };
+
+    pubsub.publish(ADD_PROJECT, project);
   });
 
   return footer;

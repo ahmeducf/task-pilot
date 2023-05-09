@@ -2,6 +2,7 @@ const RadioOption = (optionType) => {
   const radioOption = document.createElement('label');
   radioOption.classList.add('view-radio-option');
   radioOption.setAttribute('for', optionType);
+  radioOption.setAttribute('data-layout', optionType);
 
   const preview = document.createElement('div');
   preview.classList.add(`${optionType}-preview`);

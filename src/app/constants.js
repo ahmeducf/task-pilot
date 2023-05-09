@@ -11,7 +11,7 @@ const PRIORITY = {
 
 const LAYOUT = {
   LIST: 'LIST',
-  GRID: 'GRID',
+  BOARD: 'BOARD',
 };
 
 const SORT = {
