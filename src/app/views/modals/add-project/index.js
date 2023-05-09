@@ -16,6 +16,15 @@ const AddProjectModal = () => {
   modal.append(modalHeader, modalForm, modalFooter);
   modalOverlay.append(modal);
 
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+      modal.classList.add('hidden');
+      modal.addEventListener('animationend', () => {
+        modalOverlay.remove();
+      });
+    }
+  });
+
   return modalOverlay;
 };
 

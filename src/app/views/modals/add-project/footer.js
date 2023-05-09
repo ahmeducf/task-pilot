@@ -15,6 +15,16 @@ const Footer = () => {
 
   footer.append(cancelBtn, submitBtn);
 
+  cancelBtn.addEventListener('click', () => {
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modal = document.querySelector('.project-modal');
+
+    modal.classList.add('hidden');
+    modal.addEventListener('animationend', () => {
+      modalOverlay.remove();
+    });
+  });
+
   return footer;
 };
 
