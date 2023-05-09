@@ -1009,6 +1009,48 @@ input[type='color']::-moz-color-swatch {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
+}
+
+.form-field:nth-of-type(3) > label {
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.favorite-switch {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #aaa;
+  position: relative;
+  transition: background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.favorite-switch input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+}
+
+.favorite-switch .switch-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.favorite-switch.checked {
+  background-color: var(--color-primary);
+}
+
+.favorite-switch.checked > .switch-handle {
+  transform: translateX(16px);
 }
 
 /* Project-view Form Field */

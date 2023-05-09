@@ -14,10 +14,14 @@ const favoriteSwitch = () => {
   favoriteSwitchWrapper.append(input, span);
 
   const label = document.createElement('label');
-  label.setAttribute('for', 'is-favorite');
   label.textContent = 'Add to favorites';
 
   formField.append(favoriteSwitchWrapper, label);
+
+  formField.addEventListener('click', () => {
+    input.checked = !input.checked;
+    favoriteSwitchWrapper.classList.toggle('checked');
+  });
 
   return formField;
 };
