@@ -12,12 +12,16 @@
   --color-item-border: #f0f0f0;
   --color-p1: #d1453b;
   --color-p1-bg: rgba(209, 69, 59, 0.1);
+  --color-p1-bg-hover: rgba(209, 69, 59, 0.2);
   --color-p2: #eb8909;
   --color-p2-bg: rgba(235, 137, 9, 0.1);
+  --color-p2-bg-hover: rgba(235, 137, 9, 0.2);
   --color-p3: #246fe0;
   --color-p3-bg: rgba(36, 111, 224, 0.1);
-  --color-p4: #dcdcdc;
+  --color-p3-bg-hover: rgba(36, 111, 224, 0.2);
+  --color-p4: grey;
   --color-p4-bg: rgba(220, 220, 220, 0.1);
+  --color-p4-bg-hover: rgba(220, 220, 220, 0.5);
   --transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius-sm: 5px;
   --border-radius-lg: 10px;
@@ -660,10 +664,18 @@ ul.tasks-list {
   background-color: var(--color-p1-bg);
 }
 
+.checkbox-circle-p1:hover {
+  background-color: var(--color-p1-bg-hover);
+}
+
 .checkbox-circle-p2 {
   border: 2px solid var(--color-p2);
   color: var(--color-p2);
   background-color: var(--color-p2-bg);
+}
+
+.checkbox-circle-p2:hover {
+  background-color: var(--color-p2-bg-hover);
 }
 
 .checkbox-circle-p3 {
@@ -672,10 +684,18 @@ ul.tasks-list {
   background-color: var(--color-p3-bg);
 }
 
+.checkbox-circle-p3:hover {
+  background-color: var(--color-p3-bg-hover);
+}
+
 .checkbox-circle-p4 {
   border: 2px solid var(--color-p4);
   color: var(--color-p4);
   background-color: var(--color-p4-bg);
+}
+
+.checkbox-circle-p4:hover {
+  background-color: var(--color-p4-bg-hover);
 }
 
 .checkbox-circle svg {
