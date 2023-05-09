@@ -1,6 +1,6 @@
 import { isToday, isTomorrow, format } from 'date-fns';
 import { LAYOUT } from '../../../constants';
-import Task from '../task';
+import TaskView from '../task';
 
 const DaySection = (data) => {
   const { date, projectView, tasks } = data;
@@ -49,7 +49,7 @@ const DaySection = (data) => {
   dayTasks.appendChild(tasksList);
 
   tasks.forEach((task) => {
-    const taskItem = Task({ task, projectView });
+    const taskItem = TaskView({ task, projectView });
     tasksList.appendChild(taskItem);
   });
 

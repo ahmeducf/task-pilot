@@ -8,7 +8,7 @@ import {
   isTomorrow,
   isWithinInterval,
 } from 'date-fns';
-import { PRIORITY } from '../constants';
+import { PRIORITY } from '../../constants';
 
 const Task = (state = {}) => {
   const id = uuidv4();

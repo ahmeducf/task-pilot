@@ -7,7 +7,7 @@
 // The project object has a toJSON method to return a JSON object of the project.
 
 import { v4 as uuidv4 } from 'uuid';
-import { COLOR } from '../constants';
+import { COLOR } from '../../constants';
 import View from './view';
 
 const Project = (state = {}) => {

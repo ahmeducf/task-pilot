@@ -1,5 +1,5 @@
 import { LAYOUT } from '../../../constants';
-import Task from '../task';
+import TaskView from '../task';
 
 const OverdueSection = (data) => {
   const tasks = data.getOverdueTasks();
@@ -38,7 +38,7 @@ const OverdueSection = (data) => {
   overdueTasks.appendChild(tasksList);
 
   tasks.forEach((task) => {
-    const taskItem = Task({ task, projectView });
+    const taskItem = TaskView({ task, projectView });
     tasksList.appendChild(taskItem);
   });
 

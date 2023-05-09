@@ -1,4 +1,4 @@
-import { LAYOUT } from '../constants';
+import { LAYOUT } from '../../constants';
 import Sort from './sort';
 
 const View = (state = {}) => {

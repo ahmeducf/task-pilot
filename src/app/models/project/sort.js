@@ -1,4 +1,4 @@
-import { SORT, ORDERING } from '../constants';
+import { SORT, ORDERING } from '../../constants';
 
 const Sort = (state = {}) => {
   let sortBy = state.sortBy ?? SORT.PRIORITY;
