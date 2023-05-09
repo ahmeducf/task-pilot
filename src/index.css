@@ -1050,12 +1050,16 @@ input[type='color']::-moz-color-swatch {
   border-color: #dd4b39;
 }
 
-.view-radio-option.checked .list-preview:hover,
-.view-radio-option.checked .board-preview:hover {
+.view-radio-option.checked:hover .list-preview,
+.view-radio-option.checked:hover .board-preview {
   border-color: #ff7066;
 }
 
 .view-radio-option:hover .list-preview {
+  background-image: url(./assets/list-preview-hover.svg);
+}
+
+.view-radio-option:hover:not(.checked) .list-preview {
   background-image: url(./assets/list-preview-hover.svg);
   border: 1px solid grey;
 }
@@ -1067,7 +1071,10 @@ input[type='color']::-moz-color-swatch {
 
 .view-radio-option:hover .board-preview {
   background-image: url(./assets/board-preview-hover.svg);
-  border: 1px solid grey;
+}
+
+.view-radio-option:hover:not(.checked) .board-preview {
+  background-image: url(./assets/board-preview-hover.svg);
 }
 
 .view-radio-option .option {
