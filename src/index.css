@@ -198,6 +198,8 @@ main {
   gap: 16px;
   padding: 0 16px;
   background-color: var(--color-menu-bg);
+  height: calc(100vh - 44px);
+  overflow: auto;
   user-select: none;
 }
 
@@ -384,6 +386,8 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: calc(100vh - 44px);
+  overflow: auto;
 }
 
 /* Project-Header Section */
