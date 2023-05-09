@@ -10,7 +10,7 @@ const InboxView = (app) => {
 
   const tasks = document.createElement('div');
   tasks.classList.add('tasks');
-  if (inboxView.getLayout() === LAYOUT.GRID) {
+  if (inboxView.getLayout() === LAYOUT.BOARD) {
     tasks.classList.add('grid-layout');
   } else if (inboxView.getLayout() === LAYOUT.LIST) {
     tasks.classList.add('flex-layout');
@@ -18,7 +18,7 @@ const InboxView = (app) => {
 
   const tasksList = document.createElement('ul');
   tasksList.classList.add('tasks-list');
-  if (inboxView.getLayout() === LAYOUT.GRID) {
+  if (inboxView.getLayout() === LAYOUT.Board) {
     tasksList.classList.add('grid-layout');
   } else if (inboxView.getLayout() === LAYOUT.LIST) {
     tasksList.classList.add('flex-layout');

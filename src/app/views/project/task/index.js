@@ -9,7 +9,7 @@ const Task = (data) => {
 
   const taskItem = document.createElement('li');
   taskItem.classList.add('tasks-list-item');
-  if (projectView.getLayout() === LAYOUT.GRID) {
+  if (projectView.getLayout() === LAYOUT.BOARD) {
     taskItem.classList.add('grid-layout');
   } else if (projectView.getLayout() === LAYOUT.LIST) {
     taskItem.classList.add('flex-layout');
@@ -19,7 +19,7 @@ const Task = (data) => {
 
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper');
-  if (projectView.getLayout() === LAYOUT.GRID) {
+  if (projectView.getLayout() === LAYOUT.BOARD) {
     wrapper.classList.add('grid-layout');
   } else if (projectView.getLayout() === LAYOUT.LIST) {
     wrapper.classList.add('flex-layout');

@@ -14,7 +14,7 @@ const UpcomingView = (app) => {
 
   const tasksContainer = document.createElement('div');
   tasksContainer.classList.add('tasks');
-  if (app.getTodayView().getLayout() === LAYOUT.GRID) {
+  if (app.getTodayView().getLayout() === LAYOUT.BOARD) {
     tasksContainer.classList.add('grid-layout');
   } else if (app.getTodayView().getLayout() === LAYOUT.LIST) {
     tasksContainer.classList.add('flex-layout');

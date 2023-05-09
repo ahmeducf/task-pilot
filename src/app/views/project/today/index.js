@@ -11,7 +11,7 @@ const TodayView = (app) => {
 
   const tasks = document.createElement('div');
   tasks.classList.add('tasks');
-  if (app.getTodayView().getLayout() === LAYOUT.GRID) {
+  if (app.getTodayView().getLayout() === LAYOUT.BOARD) {
     tasks.classList.add('grid-layout');
   } else if (app.getTodayView().getLayout() === LAYOUT.LIST) {
     tasks.classList.add('flex-layout');

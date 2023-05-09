@@ -3,7 +3,7 @@ import { LAYOUT } from '../../../../constants';
 const Handle = (projectView) => {
   const taskHandle = document.createElement('div');
   taskHandle.classList.add('tasks-list-item__handle');
-  if (projectView.getLayout() === LAYOUT.GRID) {
+  if (projectView.getLayout() === LAYOUT.BOARD) {
     taskHandle.classList.add('grid-layout');
   } else if (projectView.getLayout() === LAYOUT.LIST) {
     taskHandle.classList.add('flex-layout');
