@@ -45,8 +45,17 @@ const projectView = () => {
   const boardRadioOption = RadioOption('board');
 
   viewRadioGroup.append(listRadioOption, boardRadioOption);
-
   formField.append(label, viewRadioGroup);
+
+  listRadioOption.addEventListener('click', () => {
+    listRadioOption.classList.add('checked');
+    boardRadioOption.classList.remove('checked');
+  });
+
+  boardRadioOption.addEventListener('click', () => {
+    boardRadioOption.classList.add('checked');
+    listRadioOption.classList.remove('checked');
+  });
 
   return formField;
 };
