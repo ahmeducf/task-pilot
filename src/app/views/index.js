@@ -49,11 +49,11 @@ function init() {
   pubsub.subscribe(RENDER_MENU, (app) => {
     renderMenu(app);
   });
-  // pubsub.subscribe(RENDER_CONTENT, (app) => {
-  //   const userProjectView = UserProjectView(app);
+  pubsub.subscribe(RENDER_CONTENT, (app) => {
+    const userProjectView = UserProjectView(app);
 
-  //   renderContent(userProjectView);
-  // });
+    renderContent(userProjectView);
+  });
 }
 
 export default { init };

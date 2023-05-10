@@ -1,11 +1,10 @@
-import { view } from './control';
 import { LAYOUT } from '../../../constants';
 
 const Header = (viewOptions) => {
   const projectHeader = document.createElement('div');
   projectHeader.classList.add('project-header');
 
-  if (viewOptions.getLayout() === LAYOUT.GRID) {
+  if (viewOptions.getLayout() === LAYOUT.BOARD) {
     projectHeader.classList.add('grid-layout');
   } else if (viewOptions.getLayout() === LAYOUT.LIST) {
     projectHeader.classList.add('flex-layout');
