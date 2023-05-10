@@ -1,6 +1,8 @@
 import { LAYOUT } from '../../../constants';
 
 const Header = (viewOptions) => {
+  const header = document.createElement('div');
+  header.classList.add('header-wrapper');
   const projectHeader = document.createElement('div');
   projectHeader.classList.add('project-header');
 
@@ -18,8 +20,9 @@ const Header = (viewOptions) => {
 
   projectHeader.appendChild(projectTitle);
   projectHeader.appendChild(controls);
+  header.appendChild(projectHeader);
 
-  return projectHeader;
+  return header;
 };
 
 export default Header;
