@@ -11,15 +11,8 @@ import TodayView from './project/today';
 import InboxView from './project/inbox';
 import UpcomingView from './project/upcoming';
 import UserProjectView from './project/user-project';
+import renderContent from './project/render-content';
 import renderMenu, { initMenu } from './menu';
-
-function renderContent(projectView) {
-  const main = document.querySelector('main');
-
-  main.removeChild(main.lastElementChild);
-
-  main.appendChild(projectView);
-}
 
 function firstLoad(app) {
   const todayView = TodayView(app);

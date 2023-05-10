@@ -1,3 +1,5 @@
+import pubsub from '../../../pubsub';
+import { RENDER_CONTENT } from '../../../pubsub/events-types';
 import activateItem from '../activate-item';
 import Item from '../item';
 
@@ -34,6 +36,8 @@ const render = (app) => {
       app.setCurrentProject(id);
 
       activateItem(favoriteListItem);
+
+      pubsub.publish(RENDER_CONTENT, app);
     });
   });
 };

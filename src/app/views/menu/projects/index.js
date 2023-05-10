@@ -1,6 +1,8 @@
 import AddProjectModal from '../../modals/add-project';
 import Item from '../item';
 import activateItem from '../activate-item';
+import pubsub from '../../../pubsub';
+import { RENDER_CONTENT } from '../../../pubsub/events-types';
 
 function showAddProjectModal() {
   const modal = AddProjectModal();
@@ -37,6 +39,8 @@ const render = (app) => {
       app.setCurrentProject(id);
 
       activateItem(favoriteListItem);
+
+      pubsub.publish(RENDER_CONTENT, app);
     });
   });
 
