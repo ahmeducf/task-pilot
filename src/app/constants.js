@@ -1,5 +1,5 @@
 const COLOR = {
-  GREY: '#E0E0E0',
+  GREY: '#808080',
 };
 
 const PRIORITY = {

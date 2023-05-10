@@ -17,8 +17,6 @@ const render = (app) => {
 
     favoriteProjects.forEach((project) => {
       const item = Item({ item: project });
-      item.dataset.id = project.getId();
-
       favoritesList.appendChild(item);
     });
 

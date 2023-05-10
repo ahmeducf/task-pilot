@@ -12,7 +12,6 @@ function showAddProjectModal() {
 function renderProjectsList(projectsList, app) {
   app.getProjects().forEach((project) => {
     const item = Item({ item: project });
-    item.dataset.id = project.getId();
 
     projectsList.appendChild(item);
   });
