@@ -400,9 +400,15 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36px 16px 8px 16px;
+  padding: 36px 0 8px 0;
+  margin: 0 16px;
   height: 72px;
   margin-bottom: 8px;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-item-border);
+  z-index: 2;
 }
 
 .project-header .project-title {
@@ -412,7 +418,7 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-black);
-  padding: 2px 4px;
+  padding: 2px 4px 2px 0;
   border-radius: var(--border-radius-sm);
   transition: var(--transition);
 }
@@ -558,6 +564,9 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   display: flex;
   gap: 3px;
   align-items: center;
+  position: sticky;
+  top: 72px;
+  background-color: var(--color-white);
 }
 
 .overdue__header button {
