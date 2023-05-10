@@ -10,6 +10,8 @@ const projects = [];
 
 const inbox = Project({ title: 'Inbox' });
 
+let currentProject = null;
+
 const today = View({
   layout: LAYOUT.LIST,
   sort: {
@@ -39,6 +41,8 @@ const addProject = (projectData) => {
   const project = Project(projectData);
 
   projects.push(project);
+
+  return project.getId();
 };
 
 const removeProject = (id) => {
@@ -48,6 +52,12 @@ const removeProject = (id) => {
     const index = projects.findIndex((p) => p.getId() === project.getId());
     projects.splice(index, 1);
   }
+};
+
+const getCurrentProject = () => currentProject;
+
+const setCurrentProject = (id) => {
+  currentProject = id;
 };
 
 const getAllTasks = () =>
@@ -239,6 +249,8 @@ export default {
   getProject,
   addProject,
   removeProject,
+  getCurrentProject,
+  setCurrentProject,
   getAllTasks,
   getInboxTasks,
   getInboxTasksCount,

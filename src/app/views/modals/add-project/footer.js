@@ -36,7 +36,7 @@ const Footer = () => {
 
     const title = document.querySelector('#project-name').value;
     const color = document.querySelector('#project-color').value;
-    const isFavorite = document.querySelector('#is-favorite').checked;
+    const favorite = document.querySelector('#is-favorite').checked;
     const { layout } = document.querySelector(
       '.view-radio-option.checked'
     ).dataset;
@@ -44,7 +44,7 @@ const Footer = () => {
     const project = {
       title,
       color,
-      isFavorite,
+      favorite,
       view: {
         layout: layout.toUpperCase(),
       },

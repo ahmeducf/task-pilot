@@ -2,7 +2,12 @@ import { addDays, addMonths, addWeeks, endOfTomorrow } from 'date-fns';
 import app from './models';
 import Task from './models/task';
 import pubsub from './pubsub';
-import { LOAD } from './pubsub/events-types';
+import {
+  ADD_PROJECT,
+  LOAD,
+  RENDER_MENU,
+  RENDER_CONTENT,
+} from './pubsub/events-types';
 
 const init = () => {
   app.getInbox().addTask(
@@ -87,6 +92,13 @@ const init = () => {
   app.load();
 
   pubsub.publish(LOAD, app);
+  pubsub.subscribe(ADD_PROJECT, (project) => {
+    const id = app.addProject(project);
+    app.setCurrentProject(id);
+
+    pubsub.publish(RENDER_MENU, app);
+    pubsub.publish(RENDER_CONTENT, app);
+  });
 };
 
 export default {
