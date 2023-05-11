@@ -857,7 +857,7 @@ ul.tasks-list {
   text-overflow: ellipsis;
 }
 
-/* Add-project Modal */
+/* Modals */
 
 .modal-overlay {
   position: fixed;
@@ -866,11 +866,17 @@ ul.tasks-list {
   z-index: 100;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add-project Modal */
+
+.modal-overlay.add-project {
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .project-modal {
@@ -921,7 +927,8 @@ ul.tasks-list {
   height: 64px;
 }
 
-.modal-footer button {
+.modal-footer .cancel-btn,
+.modal-footer .submit-btn {
   min-width: 68px;
   font-size: 13px;
   font-weight: 600;
@@ -973,15 +980,15 @@ ul.tasks-list {
   margin: 0 4px;
 }
 
-.form-field:nth-of-type(1) > label,
-.form-field:nth-of-type(2) > label,
-.form-field:nth-of-type(4) > label {
+.project-modal__form .form-field:nth-of-type(1) > label,
+.project-modal__form .form-field:nth-of-type(2) > label,
+.project-modal__form .form-field:nth-of-type(4) > label {
   font-size: 14px;
   font-weight: 700;
   color: #202020;
 }
 
-.form-field input {
+.project-modal__form .form-field input {
   border: 1px solid rgb(221, 221, 221);
   border-radius: var(--border-radius-sm);
   font-size: 14px;
@@ -989,22 +996,22 @@ ul.tasks-list {
   transition: all 0.3s ease;
 }
 
-.form-field input:focus {
+.project-modal__form .form-field input:focus {
   box-shadow: 0 0 0 1px #1f60c2, 0 0 0 4px #dceaff;
 }
 
 /* Name Form Field */
 
-.form-field:nth-of-type(1) input {
+.project-modal__form .form-field:nth-of-type(1) input {
   padding: 5px;
 }
 
-.form-field:nth-of-type(1) label {
+.project-modal__form .form-field:nth-of-type(1) label {
   display: flex;
   justify-content: space-between;
 }
 
-.form-field:nth-of-type(1) label > span.char-limit {
+.project-modal__form .form-field:nth-of-type(1) label > span.char-limit {
   color: #d1453b;
   font-size: 14px;
   font-weight: 400;
@@ -1052,7 +1059,7 @@ input[type='color']::-moz-color-swatch {
 
 /* Add-to-favorites Form Field */
 
-.form-field:nth-of-type(3) {
+.project-modal__form .form-field:nth-of-type(3) {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1060,7 +1067,7 @@ input[type='color']::-moz-color-swatch {
   cursor: pointer;
 }
 
-.form-field:nth-of-type(3) > label {
+.project-modal__form .form-field:nth-of-type(3) > label {
   font-size: 14px;
   cursor: pointer;
   user-select: none;
@@ -1207,6 +1214,147 @@ input[type='color']::-moz-color-swatch {
   opacity: 1;
   color: var(--color-white);
 }
+
+/* Task-modal */
+
+.modal-overlay.add-task {
+  margin-top: calc(50vh - 250px);
+  align-items: center;
+}
+
+.task-modal {
+  width: 550px;
+  background-color: var(--color-white);
+  box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.35);
+  border-radius: var(--border-radius-lg);
+}
+
+/* Task Modal Form */
+
+.task-modal__form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/** Task Modal Form Editor **/
+
+.task-modal__form .form-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-editor .form-field.task-name input,
+.form-editor .form-field.task-description textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: var(--color-black);
+  line-height: 1.65;
+  width: 100%;
+}
+
+.form-editor .form-field.task-name input {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.form-editor .form-field.task-description textarea {
+  font-size: 13px;
+  font-weight: 400;
+  resize: none;
+}
+
+.form-editor .form-field.task-name input::placeholder,
+.form-editor .form-field.task-description::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Task Modal Labels */
+
+.task-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+  height: 24px;
+}
+
+.task-labels .task-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  color: var(--color-black);
+  background-color: rgba(128, 128, 128, 0.2);
+  height: 24px;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-labels .task-label:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+}
+
+.task-labels .task-label .label-name {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.task-labels .task-label .remove-label-btn {
+  width: 16px;
+  height: 16px;
+  color: grey;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-labels .task-label .remove-label-btn:hover {
+  color: var(--color-black);
+  background-color: rgba(128, 128, 128, 0.7);
+}
+
+/** Task Modal Form Fields Wrapper **/
+
+.task-modal__form .fields-wrapper {
+  display: flex;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+/* Task Modal Footer */
+
+.task-modal .modal-footer {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding-top: 16px;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-item-border);
+}
+
+.modal-footer .action-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Keyframes */
 
 @keyframes popUpDown {
   0% {
