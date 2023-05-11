@@ -1334,6 +1334,58 @@ input[type='color']::-moz-color-swatch {
   padding: 16px 0;
 }
 
+.fields-wrapper .form-field {
+  background-color: var(--color-white);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  height: 28px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.fields-wrapper .form-field:not(.task-label):hover {
+  background-color: #eee;
+}
+
+.fields-wrapper .form-field.task-due-date button,
+.fields-wrapper .form-field.task-priority button {
+  display: flex;
+  gap: 4px;
+  color: grey;
+  font-size: 13px;
+}
+
+.fields-wrapper .form-field.task-label {
+  display: flex;
+  gap: 3px;
+}
+
+.fields-wrapper .form-field.task-label input {
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--color-black);
+  width: 125px;
+}
+
+.fields-wrapper .form-field.task-label button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  transition: var(--transition);
+}
+
+.fields-wrapper .form-field.task-label button:hover {
+  color: var(--icon-color-hover);
+}
+
+.fields-wrapper .form-field.task-label input::placeholder {
+  color: grey;
+}
+
 /* Task Modal Footer */
 
 .task-modal .modal-footer {
@@ -1345,6 +1397,19 @@ input[type='color']::-moz-color-swatch {
   padding-top: 16px;
   background-color: var(--color-white);
   border-top: 1px solid var(--color-item-border);
+}
+
+.modal-footer .form-field.task-project {
+  background-color: transparent;
+}
+
+.modal-footer .form-field.task-project button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
 }
 
 .modal-footer .action-btns {
