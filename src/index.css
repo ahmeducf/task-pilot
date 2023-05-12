@@ -1232,7 +1232,7 @@ input[type='color']::-moz-color-swatch {
 /* Task Modal Form */
 
 .task-modal__form {
-  padding: 16px;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1244,6 +1244,7 @@ input[type='color']::-moz-color-swatch {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 0 16px;
 }
 
 .form-editor .form-field.task-name input,
@@ -1282,6 +1283,7 @@ input[type='color']::-moz-color-swatch {
   gap: 4px;
   margin-top: 10px;
   height: 24px;
+  padding: 0 16px;
 }
 
 .task-labels .task-label {
@@ -1331,10 +1333,10 @@ input[type='color']::-moz-color-swatch {
 .task-modal__form .fields-wrapper {
   display: flex;
   gap: 8px;
-  padding: 16px 0;
+  padding: 16px;
 }
 
-.fields-wrapper .form-field {
+.fields-wrapper .form-field:not(.task-label) {
   background-color: var(--color-white);
   border: 1px solid #ddd;
   border-radius: var(--border-radius-sm);
@@ -1360,14 +1362,32 @@ input[type='color']::-moz-color-swatch {
 .fields-wrapper .form-field.task-label {
   display: flex;
   gap: 3px;
+  position: relative;
 }
 
 .fields-wrapper .form-field.task-label input {
-  border: none;
   outline: none;
   font-size: 13px;
   color: var(--color-black);
-  width: 125px;
+  width: 150px;
+  background-color: var(--color-white);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-sm);
+  height: 28px;
+  padding: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.fields-wrapper .form-field.task-label input:not(:focus):hover {
+  border-color: var(--icon-color-hover);
+}
+
+.fields-wrapper .form-field.task-label input:focus {
+  box-shadow: 0 0 0 1px #1f60c2, 0 0 0 3px #dceaff;
+}
+
+.fields-wrapper .form-field.task-label input::placeholder {
+  color: grey;
 }
 
 .fields-wrapper .form-field.task-label button {
@@ -1376,14 +1396,13 @@ input[type='color']::-moz-color-swatch {
   justify-content: center;
   color: var(--icon-color);
   transition: var(--transition);
+  position: absolute;
+  right: 6px;
+  top: 7.5px;
 }
 
 .fields-wrapper .form-field.task-label button:hover {
   color: var(--icon-color-hover);
-}
-
-.fields-wrapper .form-field.task-label input::placeholder {
-  color: grey;
 }
 
 /* Task Modal Footer */
@@ -1394,7 +1413,7 @@ input[type='color']::-moz-color-swatch {
   justify-content: space-between;
   align-items: center;
   height: 48px;
-  padding-top: 16px;
+  padding: 16px 16px 0 16px;
   background-color: var(--color-white);
   border-top: 1px solid var(--color-item-border);
 }
@@ -1410,6 +1429,17 @@ input[type='color']::-moz-color-swatch {
   cursor: pointer;
   color: #666;
   font-size: 14px;
+}
+
+.modal-footer .form-field.task-project span {
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 68px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .modal-footer .action-btns {
