@@ -1423,6 +1423,12 @@ input[type='color']::-moz-color-swatch {
 
 .modal-footer .form-field.task-project {
   background-color: transparent;
+  padding: 8px 8px 8px 6px;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+}
+.modal-footer .form-field.task-project:hover {
+  background-color: #eee;
 }
 
 .modal-footer .form-field.task-project button {
@@ -1434,6 +1440,10 @@ input[type='color']::-moz-color-swatch {
   font-size: 14px;
 }
 
+.modal-footer .form-field.task-project:hover button {
+  color: var(--color-black);
+}
+
 .modal-footer .form-field.task-project span {
   color: #666;
   font-size: 14px;
@@ -1443,6 +1453,10 @@ input[type='color']::-moz-color-swatch {
   text-overflow: ellipsis;
   overflow: hidden;
   cursor: pointer;
+}
+
+.modal-footer .form-field.task-project:hover span {
+  color: var(--color-black);
 }
 
 .modal-footer .action-btns {
