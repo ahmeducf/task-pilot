@@ -1375,10 +1375,10 @@ input[type='color']::-moz-color-swatch {
   border-radius: var(--border-radius-sm);
   height: 28px;
   padding: 0 6px;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
-.fields-wrapper .form-field.task-label input:not(:focus):hover {
+.fields-wrapper .form-field.task-label:hover input:not(:focus) {
   border-color: var(--icon-color-hover);
 }
 
@@ -1395,14 +1395,17 @@ input[type='color']::-moz-color-swatch {
   align-items: center;
   justify-content: center;
   color: var(--icon-color);
-  transition: var(--transition);
   position: absolute;
-  right: 6px;
-  top: 7.5px;
+  right: 2px;
+  top: 1.2px;
+  padding: 5.8px;
+  border-radius: 5px;
+  transition: var(--transition);
 }
 
 .fields-wrapper .form-field.task-label button:hover {
   color: var(--icon-color-hover);
+  background-color: #eee;
 }
 
 /* Task Modal Footer */
