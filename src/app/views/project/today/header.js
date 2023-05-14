@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import abstractHeader from '../abstract-header';
-import { addTask, view } from '../abstract-header/control';
+import { AddTaskControl, ViewControl } from '../abstract-header/control';
 
 const TodayHeader = (app) => {
   const header = abstractHeader(app.getTodayView());
@@ -17,8 +17,8 @@ const TodayHeader = (app) => {
   title.appendChild(todayDateSpan);
 
   const controls = header.querySelector('.controls');
-  controls.appendChild(addTask);
-  controls.appendChild(view);
+  controls.appendChild(AddTaskControl());
+  controls.appendChild(ViewControl());
 
   return header;
 };

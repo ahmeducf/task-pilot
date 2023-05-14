@@ -1,5 +1,5 @@
 import abstractHeader from '../abstract-header';
-import { addTask, view } from '../abstract-header/control';
+import { AddTaskControl, ViewControl } from '../abstract-header/control';
 
 const UpcomingHeader = (app) => {
   const header = abstractHeader(app.getUpcomingView());
@@ -8,8 +8,8 @@ const UpcomingHeader = (app) => {
   title.textContent = 'Upcoming';
 
   const controls = header.querySelector('.controls');
-  controls.appendChild(addTask);
-  controls.appendChild(view);
+  controls.appendChild(AddTaskControl());
+  controls.appendChild(ViewControl());
 
   return header;
 };

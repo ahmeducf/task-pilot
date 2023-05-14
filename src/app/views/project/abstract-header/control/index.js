@@ -1,3 +1,5 @@
+import AddTaskModal from '../../../modals/add-task';
+
 const Control = (data) => {
   const { title, icon } = data;
 
@@ -19,20 +21,33 @@ const Control = (data) => {
   return controllerBtn;
 };
 
-const addTaskControlData = {
-  title: 'add-task',
-  icon: `<svg width="13" height="13">
+const AddTaskControl = () => {
+  const addTaskControlData = {
+    title: 'add-task',
+    icon: `<svg width="13" height="13">
                   <path
                     d="M6 6V.5a.5.5 0 011 0V6h5.5a.5.5 0 110 1H7v5.5a.5.5 0 11-1 0V7H.5a.5.5 0 010-1H6z"
                     fill="currentColor"
                     fill-rule="evenodd"
                   ></path>
                 </svg>`,
+  };
+
+  const showTaskModal = () => {
+    const modal = AddTaskModal();
+    document.body.appendChild(modal);
+  };
+
+  const control = Control(addTaskControlData);
+  control.addEventListener('click', showTaskModal);
+
+  return control;
 };
 
-const showCompletedControlData = {
-  title: 'show-completed',
-  icon: `<svg
+const ShowCompletedControl = () => {
+  const showCompletedControlData = {
+    title: 'show-completed',
+    icon: `<svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -46,11 +61,17 @@ const showCompletedControlData = {
                   fill="currentColor"
                 ></path>
               </svg>`,
+  };
+
+  const showCompleted = Control(showCompletedControlData);
+
+  return showCompleted;
 };
 
-const viewControlData = {
-  title: 'view',
-  icon: `<svg
+const ViewControl = () => {
+  const viewControlData = {
+    title: 'view',
+    icon: `<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -62,11 +83,17 @@ const viewControlData = {
                   fill-rule="nonzero"
                 ></path>
               </svg>`,
+  };
+
+  const view = Control(viewControlData);
+
+  return view;
 };
 
-const editProjectControlData = {
-  title: 'edit-project',
-  icon: `<svg width="24" height="24">
+const EditProjectControl = () => {
+  const editProjectControlData = {
+    title: 'edit-project',
+    icon: `<svg width="24" height="24">
                 <g fill="none" fill-rule="evenodd">
                   <path
                     fill="currentColor"
@@ -78,11 +105,17 @@ const editProjectControlData = {
                   ></path>
                 </g>
               </svg>`,
+  };
+
+  const editProject = Control(editProjectControlData);
+
+  return editProject;
 };
 
-const deleteProjectControlData = {
-  title: 'delete-project',
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+const DeleteProjectControl = () => {
+  const deleteProjectControlData = {
+    title: 'delete-project',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                 <g fill="none" fill-rule="evenodd">
                   <path d="M0 0h24v24H0z"></path>
                   <rect
@@ -103,12 +136,17 @@ const deleteProjectControlData = {
                   ></path>
                 </g>
               </svg>`,
+  };
+
+  const deleteProject = Control(deleteProjectControlData);
+
+  return deleteProject;
 };
 
-const addTask = Control(addTaskControlData);
-const showCompleted = Control(showCompletedControlData);
-const view = Control(viewControlData);
-const editProject = Control(editProjectControlData);
-const deleteProject = Control(deleteProjectControlData);
-
-export { addTask, showCompleted, view, editProject, deleteProject };
+export {
+  AddTaskControl,
+  ShowCompletedControl,
+  ViewControl,
+  EditProjectControl,
+  DeleteProjectControl,
+};

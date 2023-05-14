@@ -1,10 +1,10 @@
 import abstractHeader from '../abstract-header';
 import {
-  addTask,
-  showCompleted,
-  view,
-  editProject,
-  deleteProject,
+  AddTaskControl,
+  ShowCompletedControl,
+  ViewControl,
+  EditProjectControl,
+  DeleteProjectControl,
 } from '../abstract-header/control';
 
 const UserProjectHeader = (app) => {
@@ -16,11 +16,11 @@ const UserProjectHeader = (app) => {
   title.textContent = project.getTitle();
 
   const controls = header.querySelector('.controls');
-  controls.appendChild(addTask);
-  controls.appendChild(showCompleted);
-  controls.appendChild(view);
-  controls.appendChild(editProject);
-  controls.appendChild(deleteProject);
+  controls.appendChild(AddTaskControl());
+  controls.appendChild(ShowCompletedControl());
+  controls.appendChild(ViewControl());
+  controls.appendChild(EditProjectControl());
+  controls.appendChild(DeleteProjectControl());
 
   return header;
 };

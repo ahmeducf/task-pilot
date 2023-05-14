@@ -5,8 +5,10 @@ const InfoTags = (task) => {
   const taskInfoTags = document.createElement('div');
   taskInfoTags.classList.add('content-wrapper__task-info-tags');
 
-  const dueDateDiv = DueDate(task);
-  taskInfoTags.appendChild(dueDateDiv);
+  if (task.getDueDate()) {
+    const dueDateDiv = DueDate(task);
+    taskInfoTags.appendChild(dueDateDiv);
+  }
 
   appendLabels(task, taskInfoTags);
 

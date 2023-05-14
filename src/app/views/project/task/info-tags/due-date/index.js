@@ -23,22 +23,52 @@ const DueDate = (task) => {
 
   if (task.dueDateIsToday()) {
     dueDateDiv.classList.add('due-date-today');
+    dueDateDiv.classList.remove(
+      'due-date-tomorrow',
+      'due-date-upcoming',
+      'due-date-within-next-week',
+      'due-date-overdue'
+    );
     // text content is in form 'Today'
     dueDateText.textContent = 'Today';
   } else if (task.dueDateIsTomorrow()) {
     dueDateDiv.classList.add('due-date-tomorrow');
+    dueDateDiv.classList.remove(
+      'due-date-today',
+      'due-date-upcoming',
+      'due-date-within-next-week',
+      'due-date-overdue'
+    );
     // text content is in form 'Tomorrow'
     dueDateText.textContent = 'Tomorrow';
   } else if (task.dueDateIsWithinNextWeek()) {
     dueDateDiv.classList.add('due-date-within-next-week');
+    dueDateDiv.classList.remove(
+      'due-date-today',
+      'due-date-tomorrow',
+      'due-date-upcoming',
+      'due-date-overdue'
+    );
     // text content is in form 'Day of the week'
     dueDateText.textContent = format(task.getDueDate(), 'EEEE');
   } else if (task.dueDateIsUpcoming()) {
     dueDateDiv.classList.add('due-date-upcoming');
+    dueDateDiv.classList.remove(
+      'due-date-today',
+      'due-date-tomorrow',
+      'due-date-within-next-week',
+      'due-date-overdue'
+    );
     // text content is in form 'Month Day'
     dueDateText.textContent = format(task.getDueDate(), 'MMM d');
   } else if (task.isOverdue()) {
     dueDateDiv.classList.add('due-date-overdue');
+    dueDateDiv.classList.remove(
+      'due-date-today',
+      'due-date-tomorrow',
+      'due-date-upcoming',
+      'due-date-within-next-week'
+    );
     // text content is in form 'Month Day'
     dueDateText.textContent = format(task.getDueDate(), 'MMM d');
   }
