@@ -890,8 +890,6 @@
                 autocomplete="off"
                 required
                 maxlength="500"
-                cols="40"
-                rows="5"
               />
             </div>
             <div class="form-field task-description">
@@ -939,7 +937,7 @@
           </div>
 
           <div class="fields-wrapper">
-            <div class="form-field task-due-date">
+            <div class="form-field task-due-date due-date-today">
               <button type="button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -953,8 +951,9 @@
                     d="M12 2a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2h8zm0 1H4a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1zm-1.25 7a.75.75 0 110 1.5.75.75 0 010-1.5zm.75-5a.5.5 0 110 1h-7a.5.5 0 010-1h7z"
                   ></path>
                 </svg>
-                <span>Due date</span>
+                <span class="btn-text">Due date</span>
               </button>
+              <input type="date" name="task-due-date" id="task-due-date" />
             </div>
             <div class="form-field task-priority">
               <button type="button">

@@ -829,6 +829,11 @@ ul.tasks-list {
   color: grey;
 }
 
+.no-due-date,
+.due-date-upcoming {
+  color: grey;
+}
+
 .due-date-today {
   color: #058527;
 }
@@ -1227,6 +1232,11 @@ input[type='color']::-moz-color-swatch {
   background-color: var(--color-white);
   box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.35);
   border-radius: var(--border-radius-lg);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.task-modal.hidden {
+  animation: fadeOut 0.2s ease-in-out forwards;
 }
 
 /* Task Modal Form */
@@ -1355,8 +1365,33 @@ input[type='color']::-moz-color-swatch {
 .fields-wrapper .form-field.task-priority button {
   display: flex;
   gap: 4px;
-  color: grey;
   font-size: 13px;
+}
+
+.form-field.task-due-date {
+  position: relative;
+}
+
+input[type='date']#task-due-date {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
 .fields-wrapper .form-field.task-label {
