@@ -1353,6 +1353,7 @@ input[type='color']::-moz-color-swatch {
   height: 28px;
   padding: 0 6px;
   display: flex;
+  gap: 4px;
   align-items: center;
   transition: var(--transition);
 }
@@ -1361,11 +1362,45 @@ input[type='color']::-moz-color-swatch {
   background-color: #eee;
 }
 
-.fields-wrapper .form-field.task-due-date button,
-.fields-wrapper .form-field.task-priority button {
+.fields-wrapper .form-field.task-due-date button.due-date-btn,
+.fields-wrapper .form-field.task-priority button.priority-btn {
   display: flex;
   gap: 4px;
   font-size: 13px;
+}
+
+.fields-wrapper .form-field.task-priority button.priority-btn {
+  color: grey;
+}
+
+.form-field.task-priority button.remove-priority-btn,
+.form-field.task-due-date button.remove-due-date-btn {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-sm);
+  color: #666;
+  z-index: 100;
+  transition: var(--transition);
+}
+
+.form-field.task-priority button.remove-priority-btn.hidden,
+.form-field.task-due-date button.remove-due-date-btn.hidden {
+  display: none;
+}
+
+.form-field.task-priority button.remove-priority-btn:hover,
+.form-field.task-due-date button.remove-due-date-btn:hover {
+  color: var(--color-black);
+  background-color: #d3d3d3;
+}
+
+.form-field.task-priority
+  button.remove-priority-btn:hover
+  svg
+  .form-field.task-due-date
+  button.remove-due-date-btn:hover
+  svg {
+  color: var(--color-black);
 }
 
 .form-field.task-due-date {
@@ -1392,6 +1427,22 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   margin: 0;
   padding: 0;
   cursor: pointer;
+}
+
+.form-field.task-priority[data-priority='p1'] button svg {
+  color: var(--color-p1);
+}
+
+.form-field.task-priority[data-priority='p2'] button svg {
+  color: var(--color-p2);
+}
+
+.form-field.task-priority[data-priority='p3'] button svg {
+  color: var(--color-p3);
+}
+
+.form-field.task-priority[data-priority='p4'] button svg {
+  color: var(--color-p4);
 }
 
 .fields-wrapper .form-field.task-label {

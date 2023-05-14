@@ -12,6 +12,7 @@ const TaskDueDate = () => {
   field.classList.add('form-field', 'task-due-date');
 
   const btn = document.createElement('button');
+  btn.classList.add('due-date-btn');
   btn.classList.add('no-due-date');
   btn.setAttribute('type', 'button');
 
@@ -39,7 +40,27 @@ const TaskDueDate = () => {
   input.setAttribute('min', endOfToday().toISOString().split('T')[0]);
   input.setAttribute('value', '');
 
-  field.append(btn, input);
+  const removeDueDateBtn = document.createElement('button');
+  removeDueDateBtn.setAttribute('type', 'button');
+  removeDueDateBtn.classList.add('remove-due-date-btn', 'hidden');
+  removeDueDateBtn.innerHTML =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.854 11.854a.5.5 0 000-.708L8.707 8l3.147-3.146a.5.5 0 00-.708-.708L8 7.293 4.854 4.146a.5.5 0 10-.708.708L7.293 8l-3.147 3.146a.5.5 0 00.708.708L8 8.707l3.146 3.147a.5.5 0 00.708 0z" fill="currentColor"></path></svg>';
+
+  field.append(btn, input, removeDueDateBtn);
+
+  removeDueDateBtn.addEventListener('click', () => {
+    input.value = '';
+    btn.classList.add('no-due-date');
+    btn.classList.remove(
+      'due-date-today',
+      'due-date-tomorrow',
+      'due-date-upcoming',
+      'due-date-within-next-week'
+    );
+    textSpan.textContent = 'Due date';
+
+    removeDueDateBtn.classList.add('hidden');
+  });
 
   input.addEventListener('change', () => {
     const today = new Date();
@@ -63,6 +84,8 @@ const TaskDueDate = () => {
         'due-date-within-next-week'
       );
       textSpan.textContent = 'Today';
+
+      removeDueDateBtn.classList.remove('hidden');
     } else if (isTomorrow(new Date(input.value))) {
       btn.classList.add('due-date-tomorrow');
       btn.classList.remove(
@@ -72,6 +95,8 @@ const TaskDueDate = () => {
         'due-date-within-next-week'
       );
       textSpan.textContent = 'Tomorrow';
+
+      removeDueDateBtn.classList.remove('hidden');
     } else if (
       isWithinInterval(new Date(input.value), { start: today, end: nextWeek })
     ) {
@@ -83,6 +108,8 @@ const TaskDueDate = () => {
         'due-date-upcoming'
       );
       textSpan.textContent = format(new Date(input.value), 'EEEE');
+
+      removeDueDateBtn.classList.remove('hidden');
     } else {
       btn.classList.add('due-date-upcoming');
       btn.classList.remove(
@@ -92,6 +119,8 @@ const TaskDueDate = () => {
         'due-date-within-next-week'
       );
       textSpan.textContent = format(new Date(input.value), 'MMM d');
+
+      removeDueDateBtn.classList.remove('hidden');
     }
   });
 
