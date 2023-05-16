@@ -1,4 +1,5 @@
-import { PRIORITY } from '../../../../../constants';
+import { PRIORITY } from '../../../../../../constants';
+import PriorityPopper from './popper';
 
 const TaskPriority = () => {
   const field = document.createElement('div');
@@ -22,6 +23,8 @@ const TaskPriority = () => {
                     fill="currentColor"
                   ></path>
                 </svg>`;
+  const unselectedPriorityIcon = btn.firstElementChild;
+
   const spanText = document.createElement('span');
   spanText.textContent = 'Priority';
 
@@ -33,6 +36,23 @@ const TaskPriority = () => {
 
   btn.append(spanText);
   field.append(btn, removePriorityBtn);
+
+  const showPriorityPopper = () => {
+    const priorityPopper = PriorityPopper(field);
+    document.body.append(priorityPopper);
+  };
+
+  field.addEventListener('click', showPriorityPopper);
+
+  removePriorityBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    removePriorityBtn.classList.add('hidden');
+    field.dataset.priority = PRIORITY.P4.toLowerCase();
+
+    btn.replaceChild(unselectedPriorityIcon, btn.firstElementChild);
+    spanText.textContent = 'Priority';
+  });
 
   return field;
 };

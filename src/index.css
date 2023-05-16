@@ -864,7 +864,8 @@ ul.tasks-list {
 
 /* Modals */
 
-.modal-overlay {
+.modal-overlay,
+.popper-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -1429,19 +1430,24 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-.form-field.task-priority[data-priority='p1'] button svg {
+.form-field.task-priority button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.form-field.task-priority[data-priority='p1'] button.priority-btn svg {
   color: var(--color-p1);
 }
 
-.form-field.task-priority[data-priority='p2'] button svg {
+.form-field.task-priority[data-priority='p2'] button.priority-btn svg {
   color: var(--color-p2);
 }
 
-.form-field.task-priority[data-priority='p3'] button svg {
+.form-field.task-priority[data-priority='p3'] button.priority-btn svg {
   color: var(--color-p3);
 }
 
-.form-field.task-priority[data-priority='p4'] button svg {
+.form-field.task-priority[data-priority='p4'] button.priority-btn svg {
   color: var(--color-p4);
 }
 
@@ -1550,6 +1556,69 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
   gap: 16px;
+}
+
+/* Select Priority Popper */
+
+.popper.select-priority {
+  position: absolute;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  width: auto;
+}
+
+.popper.select-priority .priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  overflow-y: scroll;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+
+.priority-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.priority-list-item:hover {
+  background-color: #f3f3f3;
+}
+
+.priority-list-item[data-priority='p1'] svg.priority-icon {
+  color: var(--color-p1);
+}
+
+.priority-list-item[data-priority='p2'] svg.priority-icon {
+  color: var(--color-p2);
+}
+
+.priority-list-item[data-priority='p3'] svg.priority-icon {
+  color: var(--color-p3);
+}
+
+.priority-list-item[data-priority='p4'] svg.priority-icon {
+  color: var(--color-p4);
+}
+
+.priority-list-item .priority-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 24px;
+  line-height: 24px;
+}
+
+.priority-list-item svg.select-priority-checkmark {
+  color: var(--color-primary);
 }
 
 /* Keyframes */
