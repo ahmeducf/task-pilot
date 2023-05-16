@@ -1294,6 +1294,8 @@ input[type='color']::-moz-color-swatch {
   gap: 4px;
   margin-top: 10px;
   padding: 0 16px;
+  max-height: 100px;
+  overflow-y: auto;
 }
 
 .task-labels.hidden {
