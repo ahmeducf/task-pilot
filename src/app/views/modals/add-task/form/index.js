@@ -15,7 +15,7 @@ function createEditorSection() {
 
 function createLabelsSection() {
   const labelsSection = document.createElement('div');
-  labelsSection.classList.add('task-labels');
+  labelsSection.classList.add('task-labels', 'hidden');
 
   return labelsSection;
 }

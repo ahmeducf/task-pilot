@@ -1293,8 +1293,11 @@ input[type='color']::-moz-color-swatch {
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 10px;
-  height: 24px;
   padding: 0 16px;
+}
+
+.task-labels.hidden {
+  display: none;
 }
 
 .task-labels .task-label {
@@ -1492,12 +1495,18 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   top: 1.2px;
   padding: 5.8px;
   border-radius: 5px;
+  opacity: 1;
   transition: var(--transition);
 }
 
 .fields-wrapper .form-field.task-label button:hover {
   color: var(--icon-color-hover);
   background-color: #eee;
+}
+
+.add-label-btn.hidden {
+  display: none !important;
+  opacity: 0;
 }
 
 /* Task Modal Footer */
