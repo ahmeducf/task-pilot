@@ -1256,9 +1256,11 @@ input[type='color']::-moz-color-swatch {
   flex-direction: column;
   gap: 6px;
   padding: 0 16px;
+  max-height: 200px;
+  overflow: auto;
 }
 
-.form-editor .form-field.task-name input,
+.form-editor .form-field.task-name textarea,
 .form-editor .form-field.task-description textarea {
   background-color: transparent;
   border: none;
@@ -1268,21 +1270,24 @@ input[type='color']::-moz-color-swatch {
   color: var(--color-black);
   line-height: 1.65;
   width: 100%;
+  resize: none;
+  overflow-y: hidden;
 }
 
-.form-editor .form-field.task-name input {
+.form-editor .form-field.task-name textarea {
   font-size: 20px;
   font-weight: 600;
+  height: 33px;
 }
 
 .form-editor .form-field.task-description textarea {
   font-size: 13px;
   font-weight: 400;
-  resize: none;
+  height: 21px;
 }
 
-.form-editor .form-field.task-name input::placeholder,
-.form-editor .form-field.task-description::placeholder {
+.form-editor .form-field.task-name textarea::placeholder,
+.form-editor .form-field.task-description textarea::placeholder {
   color: rgba(0, 0, 0, 0.4);
 }
 
