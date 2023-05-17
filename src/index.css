@@ -1291,6 +1291,14 @@ input[type='color']::-moz-color-swatch {
   color: rgba(0, 0, 0, 0.4);
 }
 
+.form-editor + span.char-limit {
+  color: #d1453b;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-left: 16px;
+}
+
 /* Task Modal Labels */
 
 .task-labels {

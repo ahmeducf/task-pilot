@@ -11,7 +11,6 @@ const TaskDescription = () => {
   textarea.setAttribute('id', 'task-description');
   textarea.setAttribute('name', 'task-description');
   textarea.setAttribute('placeholder', 'Description');
-  textarea.setAttribute('maxlength', '10000');
 
   field.appendChild(textarea, label);
 

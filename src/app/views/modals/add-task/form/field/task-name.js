@@ -8,7 +8,6 @@ const TaskName = () => {
   textarea.setAttribute('name', 'task-name');
   textarea.setAttribute('placeholder', 'Task name');
   textarea.setAttribute('required', true);
-  textarea.setAttribute('maxlength', 500);
   textarea.setAttribute('autocomplete', 'off');
   textarea.setAttribute('autofocus', true);
 
