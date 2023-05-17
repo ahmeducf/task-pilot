@@ -8,7 +8,7 @@ const UpcomingHeader = (app) => {
   title.textContent = 'Upcoming';
 
   const controls = header.querySelector('.controls');
-  controls.appendChild(AddTaskControl());
+  controls.appendChild(AddTaskControl(app));
   controls.appendChild(ViewControl());
 
   return header;

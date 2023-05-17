@@ -21,7 +21,7 @@ const Control = (data) => {
   return controllerBtn;
 };
 
-const AddTaskControl = () => {
+const AddTaskControl = (app) => {
   const addTaskControlData = {
     title: 'add-task',
     icon: `<svg width="13" height="13">
@@ -34,7 +34,7 @@ const AddTaskControl = () => {
   };
 
   const showTaskModal = () => {
-    const modal = AddTaskModal();
+    const modal = AddTaskModal(app);
     document.body.appendChild(modal);
   };
 

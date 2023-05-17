@@ -14,6 +14,7 @@ const render = (app) => {
   const listItems = document.querySelectorAll('.main-filters-list__item');
   listItems.forEach((listItem) => {
     listItem.addEventListener('click', () => {
+      app.setCurrentProject(null);
       pubsub.publish(`main-filters-${listItem.dataset.filter}:clicked`, app);
       activateItem(listItem);
     });

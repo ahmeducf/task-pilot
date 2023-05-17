@@ -271,7 +271,7 @@ button .icon-name-wrapper {
   gap: 5px;
 }
 
-span.project-icon {
+.icon-name-wrapper span.project-icon {
   width: 24px;
   height: 24px;
   display: flex;
@@ -1361,6 +1361,7 @@ input[type='color']::-moz-color-swatch {
   display: flex;
   gap: 4px;
   align-items: center;
+  cursor: pointer;
   transition: var(--transition);
 }
 
@@ -1530,8 +1531,23 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   border-radius: var(--border-radius-sm);
   transition: var(--transition);
 }
-.modal-footer .form-field.task-project:hover {
+.modal-footer .form-field.task-project:hover,
+.modal-footer .form-field.task-project.active {
   background-color: #eee;
+}
+
+.modal-footer .task-project span.project-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.task-project span.project-icon .project-color {
+  width: 7px;
+  height: 7px;
 }
 
 .modal-footer .form-field.task-project button {
@@ -1547,7 +1563,7 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   color: var(--color-black);
 }
 
-.modal-footer .form-field.task-project span {
+.modal-footer .form-field.task-project span.project-name {
   color: #666;
   font-size: 14px;
   font-weight: 600;
@@ -1558,7 +1574,7 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-.modal-footer .form-field.task-project:hover span {
+.modal-footer .form-field.task-project:hover span.project-name {
   color: var(--color-black);
 }
 
@@ -1569,19 +1585,20 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   gap: 16px;
 }
 
-/* Select Priority Popper */
+/* Poppers */
 
-.popper.select-priority {
+.popper.select-priority,
+.popper.select-project {
   position: absolute;
   background-color: var(--color-white);
   color: var(--color-black);
   border-radius: var(--border-radius-sm);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-  width: auto;
 }
 
-.popper.select-priority .priority-list {
+.popper.select-priority .priority-list,
+.popper.select-project .project-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1591,17 +1608,28 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   overflow-x: hidden;
 }
 
-.priority-list-item {
+.priority-list-item:hover,
+.project-list-item:hover {
+  background-color: #f3f3f3;
+}
+
+.project-list-item.selected .select-project-checkmark {
+  opacity: 1;
+}
+.project-list-item:not(.selected) .select-project-checkmark {
+  opacity: 0;
+}
+
+/* Select Priority Popper */
+
+.priority-list-item,
+.project-list-item {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 4px 8px;
   cursor: pointer;
   transition: var(--transition);
-}
-
-.priority-list-item:hover {
-  background-color: #f3f3f3;
 }
 
 .priority-list-item[data-priority='p1'] svg.priority-icon {
@@ -1620,7 +1648,8 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   color: var(--color-p4);
 }
 
-.priority-list-item .priority-name {
+.priority-list-item .priority-name,
+.project-list-item .project-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1630,6 +1659,24 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
 
 .priority-list-item svg.select-priority-checkmark {
   color: var(--color-primary);
+}
+
+/* Select Project Popper */
+
+.project-list-item {
+  width: 240px;
+}
+
+.project-list-item .project-name {
+  flex: 1;
+}
+
+.project-list-item .project-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Keyframes */

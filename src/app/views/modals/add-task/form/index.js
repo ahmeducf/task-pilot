@@ -28,7 +28,7 @@ function createFieldsWrapper() {
   return fieldsWrapper;
 }
 
-function createFooter() {
+function createFooter(app) {
   const footer = document.createElement('div');
   footer.classList.add('modal-footer');
 
@@ -47,12 +47,12 @@ function createFooter() {
 
   actionBtns.append(cancelBtn, submitBtn);
 
-  footer.append(TaskProject(), actionBtns);
+  footer.append(TaskProject(app), actionBtns);
 
   return footer;
 }
 
-const Form = () => {
+const Form = (app) => {
   const form = document.createElement('form');
   form.classList.add('task-modal__form');
 
@@ -62,7 +62,7 @@ const Form = () => {
 
   const fieldsWrapper = createFieldsWrapper();
 
-  const footer = createFooter();
+  const footer = createFooter(app);
 
   form.append(editorSection, labelsSection, fieldsWrapper, footer);
 

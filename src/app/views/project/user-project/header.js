@@ -16,7 +16,7 @@ const UserProjectHeader = (app) => {
   title.textContent = project.getTitle();
 
   const controls = header.querySelector('.controls');
-  controls.appendChild(AddTaskControl());
+  controls.appendChild(AddTaskControl(app));
   controls.appendChild(ShowCompletedControl());
   controls.appendChild(ViewControl());
   controls.appendChild(EditProjectControl());

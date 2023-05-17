@@ -1,13 +1,13 @@
 import Form from './form';
 
-const AddTaskModal = () => {
+const AddTaskModal = (app) => {
   const modalOverlay = document.createElement('div');
   modalOverlay.classList.add('modal-overlay', 'add-task');
 
   const modal = document.createElement('div');
   modal.classList.add('task-modal');
 
-  const modalForm = Form();
+  const modalForm = Form(app);
 
   modal.append(modalForm);
   modalOverlay.append(modal);
