@@ -121,7 +121,7 @@ const getTasksByPriority = (priority) =>
   getAllTasks().filter((task) => task.getPriority() === priority);
 
 const getTasksByProject = (projectID) =>
-  getAllTasks().filter((task) => task.getProjectID() === projectID);
+  getAllTasks().filter((task) => task.getProjectId() === projectID);
 
 const getTasksByDueDate = (dueDate) =>
   getAllTasks().filter((task) => task.getDueDate() === dueDate);
@@ -130,8 +130,8 @@ const getTask = (id) => getAllTasks().find((task) => task.getId() === id);
 
 const addTask = (taskData) => {
   const task = Task(taskData);
-  if (task.getProjectID()) {
-    const project = getProject(task.getProjectID());
+  if (task.getProjectId()) {
+    const project = getProject(task.getProjectId());
 
     if (project) {
       project.addTask(task);
@@ -145,7 +145,7 @@ const removeTask = (id) => {
   const task = getTask(id);
 
   if (task) {
-    const project = getProject(task.getProjectID());
+    const project = getProject(task.getProjectId());
 
     if (project) {
       project.removeTask(task);
@@ -155,15 +155,29 @@ const removeTask = (id) => {
   }
 };
 
-const updateTask = (id) => {
+const moveTask = (id, projectId) => {
   const task = getTask(id);
 
   if (task) {
-    const project = getProject(task.getProjectID());
+    const project = getProject(task.getProjectId());
 
     if (project) {
-      project.updateTask(task);
+      project.removeTask(task);
+    } else {
+      inbox.removeTask(task);
     }
+
+    if (projectId) {
+      const newProject = getProject(projectId);
+
+      if (newProject) {
+        newProject.addTask(task);
+      }
+    } else {
+      inbox.addTask(task);
+    }
+
+    task.setProjectId(projectId);
   }
 };
 
@@ -269,7 +283,7 @@ export default {
   getTask,
   addTask,
   removeTask,
-  updateTask,
+  moveTask,
   mapTasksByDueDate,
   toJSON,
   load,

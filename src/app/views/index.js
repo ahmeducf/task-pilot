@@ -7,6 +7,7 @@ import {
   RENDER_MENU,
   RENDER_CONTENT,
   REFRESH_CONTENT,
+  SHOW_PROJECT_POPPER,
 } from '../pubsub/events-types';
 import TodayView from './project/today';
 import InboxView from './project/inbox';
@@ -14,6 +15,7 @@ import UpcomingView from './project/upcoming';
 import UserProjectView from './project/user-project';
 import renderContent from './project/render-content';
 import renderMenu, { initMenu } from './menu';
+import ProjectPopper from './project/task/control-list/control/move-task/popper';
 
 function firstLoad(app) {
   const todayView = TodayView(app);
@@ -76,6 +78,17 @@ function init() {
       const projectView = UserProjectView(app);
       renderContent(projectView);
     }
+  });
+  pubsub.subscribe(SHOW_PROJECT_POPPER, (data) => {
+    const { app, taskId, taskProjectId, moveTaskControl } = data;
+    const projectPopper = ProjectPopper(
+      app,
+      taskId,
+      taskProjectId,
+      moveTaskControl
+    );
+
+    document.body.append(projectPopper);
   });
 }
 

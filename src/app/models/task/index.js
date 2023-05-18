@@ -67,9 +67,9 @@ const Task = (state = {}) => {
     labels = labels.filter((label) => label !== taskLabel);
   };
 
-  const getProjectID = () => projectId;
+  const getProjectId = () => projectId;
 
-  const setProjectID = (taskProjectID) => {
+  const setProjectId = (taskProjectID) => {
     projectId = taskProjectID;
   };
 
@@ -126,8 +126,8 @@ const Task = (state = {}) => {
     setDueDate,
     getPriority,
     setPriority,
-    getProjectID,
-    setProjectID,
+    getProjectId,
+    setProjectId,
     getLabels,
     setLabels,
     addLabel,

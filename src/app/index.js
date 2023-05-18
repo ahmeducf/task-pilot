@@ -10,6 +10,9 @@ import {
   ADD_TASK,
   REFRESH_CONTENT,
   REMOVE_TASK,
+  MOVE_TASK_CONTROL_CLICKED,
+  SHOW_PROJECT_POPPER,
+  MOVE_TASK,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -109,6 +112,15 @@ const init = () => {
   });
   pubsub.subscribe(REMOVE_TASK, (taskId) => {
     app.removeTask(taskId);
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(MOVE_TASK_CONTROL_CLICKED, (data) => {
+    pubsub.publish(SHOW_PROJECT_POPPER, { app, ...data });
+  });
+  pubsub.subscribe(MOVE_TASK, (data) => {
+    app.moveTask(data.taskId, data.projectId);
+
     pubsub.publish(REFRESH_CONTENT, app);
     pubsub.publish(RENDER_MENU, app);
   });

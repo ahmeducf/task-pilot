@@ -1,6 +1,8 @@
+import pubsub from '../../../../../../pubsub';
+import { MOVE_TASK } from '../../../../../../pubsub/events-types';
 import { CHECK_MARK_SVG, INBOX_ICON_SVG } from './constants';
 
-const createProjectItem = (project, currentProject) => {
+const createProjectItem = (project, taskProjectId) => {
   const projectItem = document.createElement('li');
   projectItem.classList.add('project-list-item');
   projectItem.dataset.project = project.getId();
@@ -17,7 +19,7 @@ const createProjectItem = (project, currentProject) => {
   projectName.classList.add('project-name');
   projectName.textContent = project.getTitle();
 
-  if (project.getId() === currentProject) {
+  if (project.getId() === taskProjectId) {
     projectItem.classList.add('selected');
   }
 
@@ -28,7 +30,7 @@ const createProjectItem = (project, currentProject) => {
   return projectItem;
 };
 
-const createInboxProjectItem = (currentProject) => {
+const createInboxProjectItem = (taskProjectId) => {
   const projectItem = document.createElement('li');
   projectItem.classList.add('project-list-item');
   projectItem.dataset.project = 'inbox';
@@ -41,7 +43,7 @@ const createInboxProjectItem = (currentProject) => {
   projectName.classList.add('project-name');
   projectName.textContent = 'Inbox';
 
-  if (currentProject === 'inbox') {
+  if (!taskProjectId) {
     projectItem.classList.add('selected');
   }
 
@@ -56,9 +58,7 @@ const handleOverlayClick = (event) => {
   overlay.remove();
 };
 
-const ProjectPopper = (app, taskProjectField) => {
-  const currentProject = taskProjectField.dataset.project;
-
+const ProjectPopper = (app, taskId, taskProjectId, moveTaskControl) => {
   const overlay = document.createElement('div');
   overlay.classList.add('popper-overlay');
 
@@ -68,10 +68,10 @@ const ProjectPopper = (app, taskProjectField) => {
   const projectList = document.createElement('ul');
   projectList.classList.add('project-list');
 
-  const inboxItem = createInboxProjectItem(currentProject);
+  const inboxItem = createInboxProjectItem(taskProjectId);
 
   const projectItems = app.getProjects().map((project) => {
-    const projectItem = createProjectItem(project, currentProject);
+    const projectItem = createProjectItem(project, taskProjectId);
     return projectItem;
   });
 
@@ -82,7 +82,7 @@ const ProjectPopper = (app, taskProjectField) => {
   const setPopperPosition = () => {
     const POPPER_WIDTH = 240;
     const { top, left, width, height } =
-      taskProjectField.getBoundingClientRect();
+      moveTaskControl.getBoundingClientRect();
 
     const offset = (POPPER_WIDTH - width) / 2;
     const x = `${left - offset}px`;
@@ -97,34 +97,24 @@ const ProjectPopper = (app, taskProjectField) => {
   setPopperPosition();
 
   overlay.addEventListener('click', (event) => {
-    taskProjectField.classList.remove('active');
+    moveTaskControl.classList.remove('active');
+    moveTaskControl.parentElement.classList.remove('active');
     handleOverlayClick(event);
   });
 
   const handleListSelection = () => {
-    const taskProject = taskProjectField;
-    const taskProjectIcon = taskProject.querySelector('.project-icon');
-    const taskProjectText = taskProject.querySelector('.project-name');
-
     [inboxItem, ...projectItems].forEach((projectItem) => {
       projectItem.addEventListener('click', () => {
-        const projectItemIcon = projectItem.querySelector('.project-icon');
-        const projectItemText = projectItem.querySelector('.project-name');
+        const { project } = projectItem.dataset;
+        const projectId = project === 'inbox' ? null : project;
 
-        const selectedProject = projectItem.dataset.project;
-        taskProject.dataset.project = selectedProject;
+        pubsub.publish(MOVE_TASK, { taskId, projectId });
 
         projectItems.forEach((item) => {
           item.classList.remove('selected');
         });
 
         projectItem.classList.add('selected');
-
-        taskProject.firstElementChild.replaceChild(
-          projectItemIcon.cloneNode(true),
-          taskProjectIcon
-        );
-        taskProjectText.textContent = projectItemText.textContent;
       });
     });
   };

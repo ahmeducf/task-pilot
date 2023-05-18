@@ -1,6 +1,8 @@
+import pubsub from '../../../../../../pubsub';
+import { MOVE_TASK_CONTROL_CLICKED } from '../../../../../../pubsub/events-types';
 import Control from '../index';
 
-const MoveTaskControl = () => {
+const MoveTaskControl = (task) => {
   const moveTaskControlData = {
     title: 'move-task-to-project',
     icon: `<svg width="24" height="24">
@@ -20,6 +22,16 @@ const MoveTaskControl = () => {
   };
 
   const moveTaskControl = Control(moveTaskControlData);
+
+  moveTaskControl.addEventListener('click', () => {
+    moveTaskControl.classList.add('active');
+    moveTaskControl.parentElement.classList.add('active');
+    pubsub.publish(MOVE_TASK_CONTROL_CLICKED, {
+      taskId: task.getId(),
+      taskProjectId: task.getProjectId(),
+      moveTaskControl,
+    });
+  });
 
   return moveTaskControl;
 };

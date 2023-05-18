@@ -426,7 +426,8 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-black);
-  padding: 2px 4px 2px 0;
+  padding: 2px 4px;
+  margin-left: -4px;
   border-radius: var(--border-radius-sm);
   transition: var(--transition);
 }
@@ -775,7 +776,8 @@ ul.tasks-list {
   transition: var(--transition);
 }
 
-.tasks-list-item:hover .task-name-controls__task-controls {
+.tasks-list-item:hover .task-name-controls__task-controls,
+.task-name-controls__task-controls.active {
   opacity: 1;
 }
 
@@ -788,7 +790,8 @@ ul.tasks-list {
   transition: var(--transition);
 }
 
-.task-name-controls__task-controls button:hover {
+.task-name-controls__task-controls button:hover,
+.task-name-controls__task-controls button.active {
   color: var(--icon-color-hover);
   background-color: var(--color-item-bg-hover);
 }
