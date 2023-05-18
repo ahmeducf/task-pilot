@@ -11,6 +11,18 @@ const Header = () => {
 
   modalHeader.append(cancelBtn);
 
+  const hideModal = () => {
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modal = document.querySelector('.confirmation-dialog__modal');
+
+    modal.classList.add('hidden');
+    modal.addEventListener('animationend', () => {
+      modalOverlay.remove();
+    });
+  };
+
+  cancelBtn.addEventListener('click', hideModal);
+
   return modalHeader;
 };
 
