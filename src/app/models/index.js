@@ -129,8 +129,7 @@ const getTasksByDueDate = (dueDate) =>
 const getTask = (id) => getAllTasks().find((task) => task.getId() === id);
 
 const addTask = (taskData) => {
-  const task = new Task(taskData);
-
+  const task = Task(taskData);
   if (task.getProjectID()) {
     const project = getProject(task.getProjectID());
 

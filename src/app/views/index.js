@@ -6,6 +6,7 @@ import {
   UPCOMING_FILTER_CLICKED,
   RENDER_MENU,
   RENDER_CONTENT,
+  REFRESH_CONTENT,
 } from '../pubsub/events-types';
 import TodayView from './project/today';
 import InboxView from './project/inbox';
@@ -42,10 +43,39 @@ function init() {
   pubsub.subscribe(RENDER_MENU, (app) => {
     renderMenu(app);
   });
-  pubsub.subscribe(RENDER_CONTENT, (app) => {
-    const userProjectView = UserProjectView(app);
+  pubsub.subscribe(RENDER_CONTENT, (data) => {
+    const { app, view } = data;
 
-    renderContent(userProjectView);
+    if (view === 'inbox') {
+      const inboxView = InboxView(app);
+      renderContent(inboxView);
+    } else if (view === 'today') {
+      const todayView = TodayView(app);
+      renderContent(todayView);
+    } else if (view === 'upcoming') {
+      const upcomingView = UpcomingView(app);
+      renderContent(upcomingView);
+    } else if (view === 'project') {
+      const projectView = UserProjectView(app);
+      renderContent(projectView);
+    }
+  });
+  pubsub.subscribe(REFRESH_CONTENT, (app) => {
+    const { view } = document.querySelector('.content').dataset;
+
+    if (view === 'inbox') {
+      const inboxView = InboxView(app);
+      renderContent(inboxView);
+    } else if (view === 'today') {
+      const todayView = TodayView(app);
+      renderContent(todayView);
+    } else if (view === 'upcoming') {
+      const upcomingView = UpcomingView(app);
+      renderContent(upcomingView);
+    } else if (view === 'project') {
+      const projectView = UserProjectView(app);
+      renderContent(projectView);
+    }
   });
 }
 

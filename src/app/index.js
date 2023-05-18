@@ -7,6 +7,8 @@ import {
   LOAD,
   RENDER_MENU,
   RENDER_CONTENT,
+  ADD_TASK,
+  REFRESH_CONTENT,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -96,8 +98,13 @@ const init = () => {
     const id = app.addProject(project);
     app.setCurrentProject(id);
 
+    pubsub.publish(RENDER_CONTENT, { app, view: 'project' });
     pubsub.publish(RENDER_MENU, app);
-    pubsub.publish(RENDER_CONTENT, app);
+  });
+  pubsub.subscribe(ADD_TASK, (task) => {
+    app.addTask(task);
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
   });
 };
 

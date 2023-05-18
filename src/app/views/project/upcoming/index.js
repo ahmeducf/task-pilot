@@ -9,6 +9,7 @@ const UpcomingView = (app) => {
     .concat(app.getUpcomingTasks());
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
+  contentSection.dataset.view = 'upcoming';
 
   const header = Header(app);
 

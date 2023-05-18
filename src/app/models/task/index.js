@@ -16,9 +16,9 @@ const Task = (state = {}) => {
   let description = state.description ?? '';
   let completed = state.completed ?? false;
   let dueDate = state.dueDate ?? null;
-  let priority = state.priority ?? PRIORITY.P4;
+  let priority = state.priority in PRIORITY ? state.priority : PRIORITY.P4;
   let labels = state.labels ?? [];
-  let projectID = state.projectID ?? null;
+  let projectId = state.projectId ?? null;
   let createdDate = new Date();
 
   const getId = () => id;
@@ -67,10 +67,10 @@ const Task = (state = {}) => {
     labels = labels.filter((label) => label !== taskLabel);
   };
 
-  const getProjectID = () => projectID;
+  const getProjectID = () => projectId;
 
   const setProjectID = (taskProjectID) => {
-    projectID = taskProjectID;
+    projectId = taskProjectID;
   };
 
   const getCreatedDate = () => createdDate;
@@ -110,7 +110,7 @@ const Task = (state = {}) => {
     dueDate,
     priority,
     labels,
-    projectID,
+    projectId,
     createdDate,
   });
 

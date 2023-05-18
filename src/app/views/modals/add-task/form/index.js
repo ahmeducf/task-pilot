@@ -4,6 +4,12 @@ import TaskDueDate from './field/task-due-date';
 import TaskPriority from './field/task-priority';
 import TaskNewLabel from './field/task-new-label';
 import TaskProject from './field/task-project';
+import pubsub from '../../../../pubsub';
+import {
+  TASK_MODAL_DESCRIPTION_MAX_LENGTH,
+  TASK_MODAL_TITLE_MAX_LENGTH,
+} from './constants';
+import { ADD_TASK } from '../../../../pubsub/events-types';
 
 function checkTaskNameValidity() {
   const { value } = document.querySelector('textarea#task-name');
@@ -103,6 +109,53 @@ function createFooter(app) {
   actionBtns.append(cancelBtn, submitBtn);
 
   footer.append(TaskProject(app), actionBtns);
+
+  const hideModal = () => {
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modal = document.querySelector('.task-modal');
+
+    modal.classList.add('hidden');
+    modal.addEventListener('animationend', () => {
+      modalOverlay.remove();
+    });
+  };
+
+  const submitBtnListener = (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector('textarea#task-name').value;
+    const description = document.querySelector('#task-description').value;
+    const { priority } = document.querySelector('.task-priority').dataset;
+    const { project } = document.querySelector('.task-project').dataset;
+    const dueDate = document.querySelector('input#task-due-date').value;
+    const labels = document.querySelectorAll(
+      '.task-labels .task-label .label-name'
+    );
+
+    if (
+      title === '' ||
+      title.length > TASK_MODAL_TITLE_MAX_LENGTH ||
+      description.length > TASK_MODAL_DESCRIPTION_MAX_LENGTH
+    ) {
+      return;
+    }
+
+    const task = {
+      title,
+      description,
+      priority: priority.toUpperCase(),
+      dueDate: dueDate === '' ? null : new Date(dueDate),
+      projectId: project === 'inbox' ? null : project,
+      labels: [...labels].map((label) => label.textContent),
+      createdDate: new Date(),
+    };
+
+    pubsub.publish(ADD_TASK, task);
+    hideModal();
+  };
+
+  cancelBtn.addEventListener('click', hideModal);
+  submitBtn.addEventListener('click', submitBtnListener);
 
   return footer;
 }

@@ -35,7 +35,7 @@ const render = (app) => {
 
       activateItem(favoriteListItem);
 
-      pubsub.publish(RENDER_CONTENT, app);
+      pubsub.publish(RENDER_CONTENT, { app, view: 'project' });
     });
   });
 };

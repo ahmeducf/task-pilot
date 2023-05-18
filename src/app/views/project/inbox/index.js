@@ -5,6 +5,8 @@ import Task from '../task';
 const InboxView = (app) => {
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
+  contentSection.dataset.view = 'inbox';
+
   const header = Header(app);
   const inboxView = app.getInboxView();
 

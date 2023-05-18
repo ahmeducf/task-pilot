@@ -7,6 +7,8 @@ const UserProjectView = (app) => {
   const project = app.getProject(id);
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
+  contentSection.dataset.view = 'project';
+
   const header = Header(app);
   const projectView = project.getView();
 

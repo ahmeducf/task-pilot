@@ -9,6 +9,7 @@ export const FILTERS_FILTER_CLICKED = 'main-filters-filters:clicked';
 export const ADD_PROJECT = Symbol('ADD_PROJECT');
 export const RENDER_MENU = Symbol('UPDATE_MENU');
 export const RENDER_CONTENT = Symbol('RENDER_CONTENT');
+export const REFRESH_CONTENT = Symbol('REFRESH_CONTENT');
 
 export const REMOVE_PROJECT = Symbol('REMOVE_PROJECT');
 export const UPDATE_PROJECT = Symbol('UPDATE_PROJECT');

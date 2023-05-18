@@ -6,6 +6,7 @@ import { LAYOUT } from '../../../constants';
 const TodayView = (app) => {
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
+  contentSection.dataset.view = 'today';
 
   const header = Header(app);
 
