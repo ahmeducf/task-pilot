@@ -875,19 +875,15 @@ ul.tasks-list {
   flex-direction: column;
 }
 
-/* Add-project Modal */
-
-.modal-overlay.add-project {
-  padding: 32px;
+.modal-overlay.add-project,
+.modal-overlay.confirmation-dialog {
   background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
   align-items: center;
 }
 
-.project-modal {
+.project-modal,
+.confirmation-dialog__modal {
   width: 450px;
-  height: 100%;
-  max-height: 534px;
   background-color: var(--color-white);
   border-radius: var(--border-radius-lg);
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.16);
@@ -896,13 +892,15 @@ ul.tasks-list {
   flex-direction: column;
 }
 
-.project-modal.hidden {
+.project-modal.hidden,
+.confirmation-dialog__modal.hidden {
   animation: fadeOut 0.2s ease-in-out forwards;
 }
 
-/* Project-modal Header/Footer */
 .project-modal .modal-header,
-.project-modal .modal-footer {
+.project-modal .modal-footer,
+.confirmation-dialog__modal .modal-header,
+.confirmation-dialog__modal .modal-footer {
   width: 100%;
   height: 49px;
   padding: 8px 16px;
@@ -913,23 +911,83 @@ ul.tasks-list {
   flex: 0 0 auto;
 }
 
-.project-modal .modal-header {
-  border-bottom: 1px solid var(--color-item-border);
+.project-modal .modal-header,
+.confirmation-dialog__modal .modal-header {
   font-size: 20px;
   font-weight: 700;
   border-top-left-radius: var(--border-radius-lg);
   border-top-right-radius: var(--border-radius-lg);
 }
 
-.project-modal .modal-footer {
+.project-modal .modal-footer,
+.confirmation-dialog__modal .modal-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
-  border-top: 1px solid var(--color-item-border);
   border-bottom-left-radius: var(--border-radius-lg);
   border-bottom-right-radius: var(--border-radius-lg);
   height: 64px;
+}
+
+/* Confirmation Dialog */
+
+.modal-overlay.confirmation-dialog {
+  padding: 32px;
+  padding-top: 84px;
+}
+
+.confirmation-dialog__modal .modal-header {
+  justify-content: space-between;
+  color: grey;
+  padding-right: 8px;
+}
+
+button.modal-header__cancel-btn {
+  color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.modal-header__cancel-btn:hover {
+  background-color: #eee;
+}
+
+button.modal-header__cancel-btn:hover svg {
+  color: #202020;
+}
+
+.confirmation-dialog__message {
+  padding: 16px;
+  padding-bottom: 32px;
+  font-size: 14px;
+}
+
+/* Add-project Modal */
+
+.modal-overlay.add-project {
+  padding: 32px;
+  justify-content: center;
+}
+
+.project-modal {
+  height: 100%;
+  max-height: 534px;
+}
+
+/* Project-modal Header/Footer */
+
+.project-modal .modal-header {
+  border-bottom: 1px solid var(--color-item-border);
+}
+
+.project-modal .modal-footer {
+  border-top: 1px solid var(--color-item-border);
 }
 
 .modal-footer .cancel-btn,

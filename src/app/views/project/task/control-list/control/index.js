@@ -1,3 +1,5 @@
+import ConfirmationDialog from '../../../../modals/confirmation-dialog';
+
 const Control = (data) => {
   const { title, icon } = data;
 
@@ -55,7 +57,7 @@ const MoveTaskControl = () => {
   return moveTaskControl;
 };
 
-const DeleteTaskControl = () => {
+const DeleteTaskControl = (task) => {
   const deleteTaskControlData = {
     title: 'delete-task',
     icon: `<svg
@@ -83,9 +85,21 @@ const DeleteTaskControl = () => {
                             ></path>
                           </g>
                         </svg>`,
+    taskId: task.getId(),
+    taskTitle: task.getTitle(),
   };
 
   const deleteTaskControl = Control(deleteTaskControlData);
+
+  deleteTaskControl.addEventListener('click', (e) => {
+    const { taskId, taskTitle } = deleteTaskControlData;
+    const confirmationDialog = ConfirmationDialog(
+      `Are you sure you want to delete <strong>${taskTitle}</strong>?`,
+      taskId
+    );
+
+    document.body.append(confirmationDialog);
+  });
 
   return deleteTaskControl;
 };

@@ -37,7 +37,7 @@ const Task = (data) => {
   taskName.classList.add('task-name-controls__task-name');
   taskName.textContent = task.getTitle();
 
-  const taskControls = ControlList();
+  const taskControls = ControlList(task);
 
   taskNameControls.appendChild(taskName);
   taskNameControls.appendChild(taskControls);

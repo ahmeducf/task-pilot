@@ -9,6 +9,7 @@ import {
   RENDER_CONTENT,
   ADD_TASK,
   REFRESH_CONTENT,
+  REMOVE_TASK,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -103,6 +104,11 @@ const init = () => {
   });
   pubsub.subscribe(ADD_TASK, (task) => {
     app.addTask(task);
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(REMOVE_TASK, (taskId) => {
+    app.removeTask(taskId);
     pubsub.publish(REFRESH_CONTENT, app);
     pubsub.publish(RENDER_MENU, app);
   });
