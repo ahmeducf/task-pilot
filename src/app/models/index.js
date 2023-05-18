@@ -149,6 +149,8 @@ const removeTask = (id) => {
 
     if (project) {
       project.removeTask(task);
+    } else {
+      inbox.removeTask(task);
     }
   }
 };
