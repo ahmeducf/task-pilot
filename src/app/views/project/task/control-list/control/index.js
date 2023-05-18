@@ -9,9 +9,10 @@ const Control = (data) => {
   return controlBtn;
 };
 
-const editTask = {
-  title: 'edit-task',
-  icon: `<svg width="24" height="24">
+const EditTaskControl = () => {
+  const editTaskControlData = {
+    title: 'edit-task',
+    icon: `<svg width="24" height="24">
                           <g fill="none" fill-rule="evenodd">
                             <path
                               fill="currentColor"
@@ -23,11 +24,17 @@ const editTask = {
                             ></path>
                           </g>
                         </svg>`,
+  };
+
+  const editTaskControl = Control(editTaskControlData);
+
+  return editTaskControl;
 };
 
-const moveTask = {
-  title: 'move-task-to-project',
-  icon: `<svg width="24" height="24">
+const MoveTaskControl = () => {
+  const moveTaskControlData = {
+    title: 'move-task-to-project',
+    icon: `<svg width="24" height="24">
                           <g fill="none" transform="translate(4 4)">
                             <circle
                               cx="8"
@@ -41,11 +48,17 @@ const moveTask = {
                             ></path>
                           </g>
                         </svg>`,
+  };
+
+  const moveTaskControl = Control(moveTaskControlData);
+
+  return moveTaskControl;
 };
 
-const deleteTask = {
-  title: 'delete-task',
-  icon: `<svg
+const DeleteTaskControl = () => {
+  const deleteTaskControlData = {
+    title: 'delete-task',
+    icon: `<svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
@@ -70,6 +83,11 @@ const deleteTask = {
                             ></path>
                           </g>
                         </svg>`,
+  };
+
+  const deleteTaskControl = Control(deleteTaskControlData);
+
+  return deleteTaskControl;
 };
 
-export { editTask, moveTask, deleteTask, Control };
+export { EditTaskControl, MoveTaskControl, DeleteTaskControl };
