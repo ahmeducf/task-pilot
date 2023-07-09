@@ -37,7 +37,8 @@ const Project = (state = {}) => {
 
   const getAllTasks = () => tasks;
 
-  const getTasksCount = () => tasks.length;
+  const getTasksCount = () =>
+    tasks.filter((task) => !task.isCompleted()).length;
 
   const addTask = (task) => {
     tasks.push(task);
