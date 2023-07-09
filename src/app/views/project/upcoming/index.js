@@ -21,21 +21,27 @@ const UpcomingView = (app) => {
     tasksContainer.classList.add('flex-layout');
   }
 
-  const overdue = OverdueSection({
-    getOverdueTasks: app.getOverdueTasks,
-    getProjectView: app.getTodayView,
-  });
+  const overdue = OverdueSection(
+    {
+      getOverdueTasks: app.getOverdueTasks,
+      getProjectView: app.getTodayView,
+    },
+    app
+  );
 
   contentSection.appendChild(header);
   contentSection.appendChild(tasksContainer);
   tasksContainer.appendChild(overdue);
 
   app.mapTasksByDueDate(todayAndUpcomingTasks).forEach((tasks, date) => {
-    const day = DaySection({
-      date: new Date(date),
-      projectView: app.getUpcomingView(),
-      tasks,
-    });
+    const day = DaySection(
+      {
+        date: new Date(date),
+        projectView: app.getUpcomingView(),
+        tasks,
+      },
+      app
+    );
 
     tasksContainer.appendChild(day);
   });

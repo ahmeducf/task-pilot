@@ -29,7 +29,7 @@ const UserProjectView = (app) => {
   }
 
   project.getTasks().forEach((task) => {
-    const taskItem = Task({ task, projectView });
+    const taskItem = Task({ task, projectView }, app);
     tasksList.appendChild(taskItem);
   });
 

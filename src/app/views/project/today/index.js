@@ -18,15 +18,21 @@ const TodayView = (app) => {
     tasks.classList.add('flex-layout');
   }
 
-  const overdue = OverdueSection({
-    getOverdueTasks: app.getOverdueTasks,
-    getProjectView: app.getTodayView,
-  });
-  const today = DaySection({
-    date: new Date(),
-    projectView: app.getTodayView(),
-    tasks: app.getTodayTasks(),
-  });
+  const overdue = OverdueSection(
+    {
+      getOverdueTasks: app.getOverdueTasks,
+      getProjectView: app.getTodayView,
+    },
+    app
+  );
+  const today = DaySection(
+    {
+      date: new Date(),
+      projectView: app.getTodayView(),
+      tasks: app.getTodayTasks(),
+    },
+    app
+  );
 
   contentSection.appendChild(header);
   contentSection.appendChild(tasks);

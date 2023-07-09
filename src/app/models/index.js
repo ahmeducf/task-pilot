@@ -155,6 +155,14 @@ const removeTask = (id) => {
   }
 };
 
+const updateTask = (id, taskData) => {
+  const task = getTask(id);
+
+  if (task) {
+    task.update(taskData);
+  }
+};
+
 const moveTask = (id, projectId) => {
   const task = getTask(id);
 
@@ -283,6 +291,7 @@ export default {
   getTask,
   addTask,
   removeTask,
+  updateTask,
   moveTask,
   mapTasksByDueDate,
   toJSON,

@@ -1,6 +1,7 @@
 import Control from '../index';
+import EditTaskModal from '../../../../../modals/edit-task';
 
-const EditTaskControl = () => {
+const EditTaskControl = (task, app) => {
   const editTaskControlData = {
     title: 'edit-task',
     icon: `<svg width="24" height="24">
@@ -18,6 +19,11 @@ const EditTaskControl = () => {
   };
 
   const editTaskControl = Control(editTaskControlData);
+
+  editTaskControl.addEventListener('click', () => {
+    const modal = EditTaskModal(task, app);
+    document.body.append(modal);
+  });
 
   return editTaskControl;
 };

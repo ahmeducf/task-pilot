@@ -27,7 +27,7 @@ const InboxView = (app) => {
   }
 
   app.getInboxTasks().forEach((task) => {
-    const taskItem = Task({ task, projectView: inboxView });
+    const taskItem = Task({ task, projectView: inboxView }, app);
     tasksList.appendChild(taskItem);
   });
 

@@ -1283,7 +1283,8 @@ input[type='color']::-moz-color-swatch {
 
 /* Task-modal */
 
-.modal-overlay.add-task {
+.modal-overlay.add-task,
+.modal-overlay.edit-task {
   margin-top: calc(50vh - 250px);
   align-items: center;
 }

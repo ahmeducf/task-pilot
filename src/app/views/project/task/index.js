@@ -4,7 +4,7 @@ import ControlList from './control-list';
 import Handle from './handle';
 import InfoTags from './info-tags';
 
-const Task = (data) => {
+const Task = (data, app) => {
   const { task, projectView } = data;
 
   const taskItem = document.createElement('li');
@@ -37,7 +37,7 @@ const Task = (data) => {
   taskName.classList.add('task-name-controls__task-name');
   taskName.textContent = task.getTitle();
 
-  const taskControls = ControlList(task);
+  const taskControls = ControlList(task, app);
 
   taskNameControls.appendChild(taskName);
   taskNameControls.appendChild(taskControls);

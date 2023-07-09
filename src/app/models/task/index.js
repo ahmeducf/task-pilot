@@ -101,6 +101,15 @@ const Task = (state = {}) => {
     return !completed && isAfter(today, dueDate) && !dueDateIsToday();
   };
 
+  const update = (taskData) => {
+    setTitle(taskData.title);
+    setDescription(taskData.description);
+    setPriority(taskData.priority);
+    setDueDate(taskData.dueDate);
+    setProjectId(taskData.projectId);
+    setLabels(taskData.labels);
+  };
+
   /* Returns a JSON representation of the task. */
   const toJSON = () => ({
     id,
@@ -139,6 +148,7 @@ const Task = (state = {}) => {
     dueDateIsWithinNextWeek,
     dueDateIsUpcoming,
     isOverdue,
+    update,
     toJSON,
   };
 };

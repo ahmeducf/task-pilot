@@ -13,6 +13,7 @@ import {
   MOVE_TASK_CONTROL_CLICKED,
   SHOW_PROJECT_POPPER,
   MOVE_TASK,
+  UPDATE_TASK,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -107,6 +108,11 @@ const init = () => {
   });
   pubsub.subscribe(ADD_TASK, (task) => {
     app.addTask(task);
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(UPDATE_TASK, (data) => {
+    app.updateTask(data.id, data.task);
     pubsub.publish(REFRESH_CONTENT, app);
     pubsub.publish(RENDER_MENU, app);
   });
