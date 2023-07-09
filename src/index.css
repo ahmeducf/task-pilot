@@ -668,20 +668,56 @@ ul.tasks-list {
   transition: all 0.2s ease-in-out;
 }
 
-.tasks-list-item__checkbox.checked .checkbox-circle-p1 {
+.tasks-list-item.completed .checkbox-circle-p1 {
   animation: popUpDownP1 0.3s ease forwards;
 }
 
-.tasks-list-item__checkbox.checked .checkbox-circle-p2 {
+.tasks-list-item.not-completed .checkbox-circle-p1 {
+  animation: popUpDownP1_unchecked 0.3s ease forwards;
+}
+
+.tasks-list-item.checked .checkbox-circle-p1 {
+  background-color: var(--color-p1);
+  color: var(--color-white);
+}
+
+.tasks-list-item.completed .checkbox-circle-p2 {
   animation: popUpDownP2 0.3s ease forwards;
 }
 
-.tasks-list-item__checkbox.checked .checkbox-circle-p3 {
+.tasks-list-item.not-completed .checkbox-circle-p2 {
+  animation: popUpDownP2_unchecked 0.3s ease forwards;
+}
+
+.tasks-list-item.checked .checkbox-circle-p2 {
+  background-color: var(--color-p2);
+  color: var(--color-white);
+}
+
+.tasks-list-item.completed .checkbox-circle-p3 {
   animation: popUpDownP3 0.3s ease forwards;
 }
 
-.tasks-list-item__checkbox.checked .checkbox-circle-p4 {
+.tasks-list-item.not-completed .checkbox-circle-p3 {
+  animation: popUpDownP3_unchecked 0.3s ease forwards;
+}
+
+.tasks-list-item.checked .checkbox-circle-p3 {
+  background-color: var(--color-p3);
+  color: var(--color-white);
+}
+
+.tasks-list-item.completed .checkbox-circle-p4 {
   animation: popUpDownP4 0.3s ease forwards;
+}
+
+.tasks-list-item.not-completed .checkbox-circle-p4 {
+  animation: popUpDownP4_unchecked 0.3s ease forwards;
+}
+
+.tasks-list-item.checked .checkbox-circle-p4 {
+  background-color: var(--color-p4);
+  color: var(--color-white);
 }
 
 .checkbox-circle {
@@ -745,7 +781,8 @@ ul.tasks-list {
 }
 
 .checkbox-circle:hover svg,
-.tasks-list-item__checkbox.checked .checkbox-circle svg {
+.tasks-list-item.completed .checkbox-circle svg,
+.tasks-list-item.checked .checkbox-circle svg {
   opacity: 1;
 }
 
@@ -781,6 +818,11 @@ ul.tasks-list {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.tasks-list-item.checked .task-name-controls__task-name {
+  color: grey;
+  text-decoration: line-through;
 }
 
 /*** Task Item Controls ***/
@@ -1790,6 +1832,19 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   }
 }
 
+@keyframes popUpDownP1_unchecked {
+  0% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.3);
+    background-color: var(--color-p1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes popUpDownP1 {
   0% {
     transform: scale(1);
@@ -1801,6 +1856,19 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   100% {
     color: var(--color-white);
     background-color: var(--color-p1);
+    transform: scale(1);
+  }
+}
+
+@keyframes popUpDownP2_unchecked {
+  0% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.3);
+    background-color: var(--color-p2);
+  }
+  100% {
     transform: scale(1);
   }
 }
@@ -1820,6 +1888,19 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   }
 }
 
+@keyframes popUpDownP3_unchecked {
+  0% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.3);
+    background-color: var(--color-p3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes popUpDownP3 {
   0% {
     transform: scale(1);
@@ -1831,6 +1912,19 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
   100% {
     color: var(--color-white);
     background-color: var(--color-p3);
+    transform: scale(1);
+  }
+}
+
+@keyframes popUpDownP4_unchecked {
+  0% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.3);
+    background-color: var(--color-p4);
+  }
+  100% {
     transform: scale(1);
   }
 }

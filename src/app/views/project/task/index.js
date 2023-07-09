@@ -9,6 +9,10 @@ const Task = (data, app) => {
 
   const taskItem = document.createElement('li');
   taskItem.classList.add('tasks-list-item');
+  if (task.isCompleted()) {
+    taskItem.classList.add('checked');
+  }
+
   if (projectView.getLayout() === LAYOUT.BOARD) {
     taskItem.classList.add('grid-layout');
   } else if (projectView.getLayout() === LAYOUT.LIST) {
@@ -25,7 +29,7 @@ const Task = (data, app) => {
     wrapper.classList.add('flex-layout');
   }
 
-  const taskCheckbox = CheckBox(task);
+  const taskCheckbox = CheckBox(task, app);
 
   const taskContentWrapper = document.createElement('div');
   taskContentWrapper.classList.add('tasks-list-item__content-wrapper');

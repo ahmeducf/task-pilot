@@ -28,10 +28,17 @@ const UserProjectView = (app) => {
     tasksList.classList.add('flex-layout');
   }
 
-  project.getTasks().forEach((task) => {
-    const taskItem = Task({ task, projectView }, app);
-    tasksList.appendChild(taskItem);
-  });
+  if (project.isShowCompleted()) {
+    project.getAllTasks().forEach((task) => {
+      const taskItem = Task({ task, projectView }, app);
+      tasksList.appendChild(taskItem);
+    });
+  } else {
+    project.getUnCompletedTasks().forEach((task) => {
+      const taskItem = Task({ task, projectView }, app);
+      tasksList.appendChild(taskItem);
+    });
+  }
 
   tasks.appendChild(tasksList);
   contentSection.appendChild(header);

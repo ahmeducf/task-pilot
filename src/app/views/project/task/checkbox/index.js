@@ -1,3 +1,9 @@
+import pubsub from '../../../../pubsub';
+import {
+  CHECK_TASK_COMPLETED,
+  CHECK_TASK_NOT_COMPLETED,
+} from '../../../../pubsub/events-types';
+
 const CheckBox = (task) => {
   const taskCheckbox = document.createElement('div');
   taskCheckbox.classList.add('tasks-list-item__checkbox');
@@ -14,6 +20,26 @@ const CheckBox = (task) => {
                     </svg>`;
 
   taskCheckbox.appendChild(controlBtn);
+
+  taskCheckbox.addEventListener('click', () => {
+    const listItem = taskCheckbox.parentElement.parentElement;
+    task.toggleCompleted();
+
+    if (task.isCompleted()) {
+      listItem.classList.remove('not-completed');
+      listItem.classList.add('completed');
+      listItem.addEventListener('animationend', () => {
+        pubsub.publish(CHECK_TASK_COMPLETED);
+      });
+    } else {
+      listItem.classList.add('not-completed');
+      listItem.classList.remove('completed');
+      listItem.addEventListener('animationend', () => {
+        pubsub.publish(CHECK_TASK_NOT_COMPLETED);
+      });
+    }
+  });
+
   return taskCheckbox;
 };
 

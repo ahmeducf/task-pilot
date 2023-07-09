@@ -16,6 +16,7 @@ const Project = (state = {}) => {
   let color = state.color ?? COLOR.GREY;
   let tasks = state.tasks ?? [];
   let favorite = state.favorite ?? false;
+  let showCompleted = state.showCompleted ?? false;
   const view = View(state.view);
 
   const getId = () => id;
@@ -32,7 +33,9 @@ const Project = (state = {}) => {
     color = projectColor;
   };
 
-  const getTasks = () => tasks;
+  const getUnCompletedTasks = () => tasks.filter((task) => !task.isCompleted());
+
+  const getAllTasks = () => tasks;
 
   const getTasksCount = () => tasks.length;
 
@@ -56,6 +59,12 @@ const Project = (state = {}) => {
     favorite = !favorite;
   };
 
+  const isShowCompleted = () => showCompleted;
+
+  const toggleShowCompleted = () => {
+    showCompleted = !showCompleted;
+  };
+
   const getView = () => view;
 
   const setView = (newView) => {
@@ -68,6 +77,7 @@ const Project = (state = {}) => {
     title,
     color,
     favorite,
+    showCompleted,
     tasks: tasks.map((task) => task.toJSON()),
     view: view.toJSON(),
   });
@@ -78,12 +88,15 @@ const Project = (state = {}) => {
     setTitle,
     getColor,
     setColor,
-    getTasks,
+    getAllTasks,
+    getUnCompletedTasks,
     getTasksCount,
     addTask,
     removeTask,
     updateTask,
     isFavorite,
+    isShowCompleted,
+    toggleShowCompleted,
     toggleFavorite,
     getView,
     setView,

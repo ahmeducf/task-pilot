@@ -3,6 +3,7 @@ import { LAYOUT } from '../../../constants';
 import Task from '../task';
 
 const InboxView = (app) => {
+  const inbox = app.getInbox();
   const contentSection = document.createElement('section');
   contentSection.classList.add('content');
   contentSection.dataset.view = 'inbox';
@@ -26,10 +27,17 @@ const InboxView = (app) => {
     tasksList.classList.add('flex-layout');
   }
 
-  app.getInboxTasks().forEach((task) => {
-    const taskItem = Task({ task, projectView: inboxView }, app);
-    tasksList.appendChild(taskItem);
-  });
+  if (inbox.isShowCompleted()) {
+    app.getAllInboxTasks().forEach((task) => {
+      const taskItem = Task({ task, projectView: inboxView }, app);
+      tasksList.appendChild(taskItem);
+    });
+  } else {
+    app.getUnCompletedInboxTasks().forEach((task) => {
+      const taskItem = Task({ task, projectView: inboxView }, app);
+      tasksList.appendChild(taskItem);
+    });
+  }
 
   tasks.appendChild(tasksList);
   contentSection.appendChild(header);

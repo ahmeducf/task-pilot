@@ -62,15 +62,16 @@ const setCurrentProject = (id) => {
 
 const getAllTasks = () =>
   projects
-    .reduce((tasks, project) => tasks.concat(project.getTasks()), [])
-    .concat(inbox.getTasks());
+    .reduce((tasks, project) => tasks.concat(project.getAllTasks()), [])
+    .concat(inbox.getAllTasks());
 
-const getInboxTasks = () => inbox.getTasks();
+const getUnCompletedInboxTasks = () => inbox.getUnCompletedTasks();
+const getAllInboxTasks = () => inbox.getAllTasks();
 
 const getInboxTasksCount = () => inbox.getTasksCount();
 
 const getNonInboxTasks = () =>
-  projects.reduce((tasks, project) => tasks.concat(project.getTasks()), []);
+  projects.reduce((tasks, project) => tasks.concat(project.getAllTasks()), []);
 
 const getTodayTasks = () =>
   getAllTasks().filter((task) => task.dueDateIsToday() && !task.isCompleted());
@@ -275,7 +276,8 @@ export default {
   getCurrentProject,
   setCurrentProject,
   getAllTasks,
-  getInboxTasks,
+  getAllInboxTasks,
+  getUnCompletedInboxTasks,
   getInboxTasksCount,
   getNonInboxTasks,
   getTodayTasks,

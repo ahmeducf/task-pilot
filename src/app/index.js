@@ -14,6 +14,8 @@ import {
   SHOW_PROJECT_POPPER,
   MOVE_TASK,
   UPDATE_TASK,
+  CHECK_TASK_COMPLETED,
+  CHECK_TASK_NOT_COMPLETED,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -118,6 +120,14 @@ const init = () => {
   });
   pubsub.subscribe(REMOVE_TASK, (taskId) => {
     app.removeTask(taskId);
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(CHECK_TASK_COMPLETED, () => {
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(CHECK_TASK_NOT_COMPLETED, () => {
     pubsub.publish(REFRESH_CONTENT, app);
     pubsub.publish(RENDER_MENU, app);
   });
