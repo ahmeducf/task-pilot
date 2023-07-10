@@ -22,6 +22,7 @@ const TodayView = (app) => {
     {
       getOverdueTasks: app.getOverdueTasks,
       getProjectView: app.getTodayView,
+      view: 'today',
     },
     app
   );
@@ -29,6 +30,7 @@ const TodayView = (app) => {
     {
       date: new Date(),
       projectView: app.getTodayView(),
+      view: 'today',
       tasks: app.getTodayTasks(),
     },
     app

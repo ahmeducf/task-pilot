@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import Sortable from 'sortablejs';
 import { LAYOUT } from '../../../constants';
 import TaskView from '../task';
@@ -6,6 +5,7 @@ import TaskView from '../task';
 const OverdueSection = (data, app) => {
   const tasks = data.getOverdueTasks();
   const projectView = data.getProjectView();
+  const { view } = data;
 
   const overdueSection = document.createElement('section');
   overdueSection.classList.add('overdue');
@@ -34,7 +34,7 @@ const OverdueSection = (data, app) => {
   }
 
   Sortable.create(tasksList, {
-    group: uuidv4(),
+    group: `${view}-overdue`,
     animation: 150,
     draggable: '.tasks-list-item',
     handle: '.tasks-list-item__handle',

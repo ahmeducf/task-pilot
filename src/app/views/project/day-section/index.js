@@ -1,11 +1,10 @@
 import { isToday, isTomorrow, format } from 'date-fns';
 import Sortable from 'sortablejs';
-import { v4 as uuidv4 } from 'uuid';
 import { LAYOUT } from '../../../constants';
 import TaskView from '../task';
 
 const DaySection = (data, app) => {
-  const { date, projectView, tasks } = data;
+  const { date, projectView, view, tasks } = data;
 
   const daySection = document.createElement('section');
   const dayHeader = document.createElement('div');
@@ -46,7 +45,7 @@ const DaySection = (data, app) => {
   }
 
   Sortable.create(tasksList, {
-    group: uuidv4(),
+    group: `${view}-${format(date, 'yyyy-MM-dd')}`,
     animation: 150,
     draggable: '.tasks-list-item',
     handle: '.tasks-list-item__handle',

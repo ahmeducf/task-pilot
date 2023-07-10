@@ -30,7 +30,7 @@ const InboxView = (app) => {
   }
 
   Sortable.create(tasksList, {
-    group: uuidv4(),
+    group: 'inbox',
     animation: 150,
     draggable: '.tasks-list-item',
     handle: '.tasks-list-item__handle',

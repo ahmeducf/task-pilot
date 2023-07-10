@@ -1,4 +1,5 @@
 import { LAYOUT } from '../../../constants';
+import EditTaskModal from '../../modals/edit-task';
 import CheckBox from './checkbox';
 import ControlList from './control-list';
 import Handle from './handle';
@@ -9,6 +10,7 @@ const Task = (data, app) => {
 
   const taskItem = document.createElement('li');
   taskItem.classList.add('tasks-list-item');
+  taskItem.dataset.id = task.getId();
   if (task.isCompleted()) {
     taskItem.classList.add('checked');
   }

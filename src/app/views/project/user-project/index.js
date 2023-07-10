@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import Sortable from 'sortablejs';
 import Header from './header';
 import { LAYOUT } from '../../../constants';
@@ -31,7 +30,7 @@ const UserProjectView = (app) => {
   }
 
   Sortable.create(tasksList, {
-    group: uuidv4(),
+    group: `${project.getTitle()}-${id}`,
     animation: 150,
     draggable: '.tasks-list-item',
     handle: '.tasks-list-item__handle',

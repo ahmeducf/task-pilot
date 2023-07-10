@@ -25,6 +25,7 @@ const UpcomingView = (app) => {
     {
       getOverdueTasks: app.getOverdueTasks,
       getProjectView: app.getTodayView,
+      view: 'upcoming',
     },
     app
   );
@@ -38,6 +39,7 @@ const UpcomingView = (app) => {
       {
         date: new Date(date),
         projectView: app.getUpcomingView(),
+        view: 'upcoming',
         tasks,
       },
       app
