@@ -105,7 +105,7 @@ const TaskDueDate = (task) => {
         'due-date-tomorrow',
         'due-date-upcoming'
       );
-      textSpan.textContent = format(new Date(input.value), 'EEEE');
+      textSpan.textContent = format(new Date(date), 'EEEE');
 
       removeDueDateBtn.classList.remove('hidden');
     } else {

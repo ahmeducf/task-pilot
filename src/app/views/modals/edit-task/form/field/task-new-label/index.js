@@ -39,7 +39,6 @@ const TaskNewLabel = () => {
     }
 
     const taskLabelsSection = document.querySelector('.task-labels');
-    console.log(taskLabelsSection);
     const labelTitle = input.value;
 
     // if has label with same title, return

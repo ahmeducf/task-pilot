@@ -2,7 +2,6 @@ import { ARROW_DOWN_SVG, INBOX_ICON_SVG } from './constants';
 import ProjectPopper from './popper';
 
 const TaskProject = (taskData, app) => {
-  console.log(taskData, app);
   const currentProject = app.getCurrentProject();
 
   const field = document.createElement('div');
