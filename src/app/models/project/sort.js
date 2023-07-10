@@ -1,8 +1,16 @@
 import { SORT, ORDERING } from '../../constants';
 
 const Sort = (state = {}) => {
-  let sortBy = state.sortBy ?? SORT.PRIORITY;
-  let ordering = state.ordering ?? ORDERING.DESC;
+  let sortBy;
+  let ordering;
+
+  if (!state) {
+    sortBy = SORT.PRIORITY;
+    ordering = ORDERING.DESC;
+  } else {
+    sortBy = state.sortBy ?? SORT.PRIORITY;
+    ordering = state.ordering ?? ORDERING.DESC;
+  }
 
   const getSortBy = () => sortBy;
 

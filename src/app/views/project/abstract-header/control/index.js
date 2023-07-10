@@ -1,6 +1,7 @@
 import pubsub from '../../../../pubsub';
 import { REFRESH_CONTENT, RENDER_MENU } from '../../../../pubsub/events-types';
 import AddTaskModal from '../../../modals/add-task';
+import EditProjectModal from '../../../modals/edit-project';
 
 const Control = (data) => {
   const { title, icon } = data;
@@ -113,7 +114,7 @@ const ViewControl = () => {
   return view;
 };
 
-const EditProjectControl = () => {
+const EditProjectControl = (app) => {
   const editProjectControlData = {
     title: 'edit-project',
     icon: `<svg width="24" height="24">
@@ -131,6 +132,11 @@ const EditProjectControl = () => {
   };
 
   const editProject = Control(editProjectControlData);
+
+  editProject.addEventListener('click', () => {
+    const modal = EditProjectModal(app);
+    document.body.appendChild(modal);
+  });
 
   return editProject;
 };

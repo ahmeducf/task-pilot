@@ -938,6 +938,7 @@ ul.tasks-list {
 }
 
 .modal-overlay.add-project,
+.modal-overlay.edit-project,
 .modal-overlay.confirmation-dialog {
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;

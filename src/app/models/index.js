@@ -45,6 +45,14 @@ const addProject = (projectData) => {
   return project.getId();
 };
 
+const updateProject = (id, projectData) => {
+  const project = getProject(id);
+
+  if (project) {
+    project.update(projectData);
+  }
+};
+
 const removeProject = (id) => {
   const project = getProject(id);
 
@@ -272,6 +280,7 @@ export default {
   getFavoriteProjects,
   getProject,
   addProject,
+  updateProject,
   removeProject,
   getCurrentProject,
   setCurrentProject,

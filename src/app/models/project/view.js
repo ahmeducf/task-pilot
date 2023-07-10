@@ -2,8 +2,12 @@ import { LAYOUT } from '../../constants';
 import Sort from './sort';
 
 const View = (state = {}) => {
+  if (!state) {
+    throw new Error('View: stat is required');
+  }
+
   let layout = state.layout ?? LAYOUT.LIST;
-  const sort = Sort(state.sort);
+  let sort = Sort(state.sort);
 
   const getLayout = () => layout;
 
@@ -14,8 +18,7 @@ const View = (state = {}) => {
   const getSort = () => sort;
 
   const setSort = (newSort) => {
-    sort.setSortBy(newSort.sortBy);
-    sort.setOrdering(newSort.ordering);
+    sort = Sort(newSort);
   };
 
   const toJSON = () => ({

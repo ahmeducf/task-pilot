@@ -73,6 +73,13 @@ const Project = (state = {}) => {
     view.setSort(newView.sort);
   };
 
+  const update = (projectData) => {
+    setTitle(projectData.title);
+    setColor(projectData.color);
+    toggleFavorite(projectData.favorite);
+    setView(projectData.view);
+  };
+
   const toJSON = () => ({
     id,
     title,
@@ -101,6 +108,7 @@ const Project = (state = {}) => {
     toggleFavorite,
     getView,
     setView,
+    update,
     toJSON,
   };
 };

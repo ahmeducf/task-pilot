@@ -22,7 +22,7 @@ const UserProjectView = (app) => {
 
   const tasksList = document.createElement('ul');
   tasksList.classList.add('tasks-list');
-  if (projectView.getLayout() === LAYOUT.Board) {
+  if (projectView.getLayout() === LAYOUT.BOARD) {
     tasksList.classList.add('grid-layout');
   } else if (projectView.getLayout() === LAYOUT.LIST) {
     tasksList.classList.add('flex-layout');
