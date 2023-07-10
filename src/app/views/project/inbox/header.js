@@ -13,8 +13,8 @@ const InboxHeader = (app) => {
 
   const controls = header.querySelector('.controls');
   controls.appendChild(AddTaskControl(app));
-  controls.appendChild(ShowCompletedControl());
-  controls.appendChild(ViewControl());
+  controls.appendChild(ShowCompletedControl(app));
+  controls.appendChild(ViewControl(app));
 
   return header;
 };

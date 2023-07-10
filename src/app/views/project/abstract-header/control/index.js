@@ -1,3 +1,5 @@
+import pubsub from '../../../../pubsub';
+import { REFRESH_CONTENT, RENDER_MENU } from '../../../../pubsub/events-types';
 import AddTaskModal from '../../../modals/add-task';
 
 const Control = (data) => {
@@ -44,10 +46,17 @@ const AddTaskControl = (app) => {
   return control;
 };
 
-const ShowCompletedControl = () => {
-  const showCompletedControlData = {
-    title: 'show-completed',
-    icon: `<svg
+const ShowCompletedControl = (app) => {
+  const id = app.getCurrentProject();
+  let project;
+
+  if (!id) {
+    project = app.getInbox();
+  } else {
+    project = app.getProject(id);
+  }
+
+  const showCompletedSVG = `<svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -60,10 +69,24 @@ const ShowCompletedControl = () => {
                   d="M12 21a9 9 0 100-18 9 9 0 000 18zm0-1a8 8 0 110-16 8 8 0 010 16zm-4.354-8.104a.5.5 0 01.708 0l2.146 2.147 5.146-5.147a.5.5 0 01.708.708l-5.5 5.5a.5.5 0 01-.708 0l-2.5-2.5a.5.5 0 010-.708z"
                   fill="currentColor"
                 ></path>
-              </svg>`,
+              </svg>`;
+
+  const hideCompletedSVG =
+    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 21a9 9 0 110-18 9 9 0 010 18zm0-1a8 8 0 100-16 8 8 0 000 16zm3.854-11.854a.5.5 0 00-.708 0l-7 7a.5.5 0 00.708.708l7-7a.5.5 0 000-.708z" fill="currentColor"></path></svg>';
+
+  const showCompletedControlData = {
+    title: project.isShowCompleted() ? 'Hide-completed' : 'Show-completed',
+    icon: project.isShowCompleted() ? hideCompletedSVG : showCompletedSVG,
   };
 
   const showCompleted = Control(showCompletedControlData);
+
+  showCompleted.addEventListener('click', () => {
+    project.toggleShowCompleted();
+
+    pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
 
   return showCompleted;
 };

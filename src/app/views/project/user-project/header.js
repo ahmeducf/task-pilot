@@ -17,10 +17,10 @@ const UserProjectHeader = (app) => {
 
   const controls = header.querySelector('.controls');
   controls.appendChild(AddTaskControl(app));
-  controls.appendChild(ShowCompletedControl());
-  controls.appendChild(ViewControl());
-  controls.appendChild(EditProjectControl());
-  controls.appendChild(DeleteProjectControl());
+  controls.appendChild(ShowCompletedControl(app));
+  controls.appendChild(ViewControl(app));
+  controls.appendChild(EditProjectControl(app));
+  controls.appendChild(DeleteProjectControl(app));
 
   return header;
 };

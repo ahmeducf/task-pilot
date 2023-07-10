@@ -18,7 +18,7 @@ const TodayHeader = (app) => {
 
   const controls = header.querySelector('.controls');
   controls.appendChild(AddTaskControl(app));
-  controls.appendChild(ViewControl());
+  controls.appendChild(ViewControl(app));
 
   return header;
 };
