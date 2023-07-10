@@ -66,6 +66,11 @@ const Task = (data, app) => {
   taskItem.appendChild(taskHandle);
   taskItem.appendChild(wrapper);
 
+  taskItem.addEventListener('click', () => {
+    const modal = EditTaskModal(task, app);
+    document.body.appendChild(modal);
+  });
+
   return taskItem;
 };
 

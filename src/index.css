@@ -526,6 +526,10 @@ li.main-filters-list__item:nth-of-type(2) span.count {
   cursor: pointer;
 }
 
+.tasks-list-item:hover {
+  cursor: pointer;
+}
+
 .tasks-list-item__handle.grid-layout {
   display: none;
 }
