@@ -20,7 +20,9 @@ const EditTaskControl = (task, app) => {
 
   const editTaskControl = Control(editTaskControlData);
 
-  editTaskControl.addEventListener('click', () => {
+  editTaskControl.addEventListener('click', (e) => {
+    e.stopPropagation();
+
     const modal = EditTaskModal(task, app);
     document.body.append(modal);
   });

@@ -36,6 +36,8 @@ const DeleteTaskControl = (task) => {
   const deleteTaskControl = Control(deleteTaskControlData);
 
   deleteTaskControl.addEventListener('click', (e) => {
+    e.stopPropagation();
+
     const { taskId, taskTitle } = deleteTaskControlData;
     const confirmationDialog = ConfirmationDialog(
       `Are you sure you want to delete <strong>${taskTitle}</strong>?`,

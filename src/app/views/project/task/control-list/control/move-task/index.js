@@ -23,7 +23,9 @@ const MoveTaskControl = (task) => {
 
   const moveTaskControl = Control(moveTaskControlData);
 
-  moveTaskControl.addEventListener('click', () => {
+  moveTaskControl.addEventListener('click', (e) => {
+    e.stopPropagation();
+
     moveTaskControl.classList.add('active');
     moveTaskControl.parentElement.classList.add('active');
     pubsub.publish(MOVE_TASK_CONTROL_CLICKED, {
