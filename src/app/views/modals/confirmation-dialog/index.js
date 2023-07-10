@@ -1,7 +1,8 @@
-import Footer from './delete-task/footer';
+import TaskFooter from './delete-task/footer';
+import ProjectFooter from './delete-project/footer';
 import Header from './header';
 
-const ConfirmationDialog = (message, id) => {
+const ConfirmationDialog = (message, id, type) => {
   const modalOverlay = document.createElement('div');
   modalOverlay.classList.add('modal-overlay', 'confirmation-dialog');
 
@@ -14,7 +15,12 @@ const ConfirmationDialog = (message, id) => {
   dialogMessage.classList.add('confirmation-dialog__message');
   dialogMessage.innerHTML = message;
 
-  const modalFooter = Footer(id);
+  let modalFooter;
+  if (type === 'task') {
+    modalFooter = TaskFooter(id);
+  } else if (type === 'project') {
+    modalFooter = ProjectFooter(id);
+  }
 
   modal.append(modalHeader, dialogMessage, modalFooter);
   modalOverlay.append(modal);

@@ -1,6 +1,7 @@
 import pubsub from '../../../../pubsub';
 import { REFRESH_CONTENT, RENDER_MENU } from '../../../../pubsub/events-types';
 import AddTaskModal from '../../../modals/add-task';
+import ConfirmationDialog from '../../../modals/confirmation-dialog';
 import EditProjectModal from '../../../modals/edit-project';
 
 const Control = (data) => {
@@ -141,7 +142,10 @@ const EditProjectControl = (app) => {
   return editProject;
 };
 
-const DeleteProjectControl = () => {
+const DeleteProjectControl = (app) => {
+  const id = app.getCurrentProject();
+  const project = app.getProject(id);
+
   const deleteProjectControlData = {
     title: 'delete-project',
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -168,6 +172,16 @@ const DeleteProjectControl = () => {
   };
 
   const deleteProject = Control(deleteProjectControlData);
+
+  deleteProject.addEventListener('click', () => {
+    const confirmationDialog = ConfirmationDialog(
+      `Are you sure you want to delete <strong>${project.getTitle()}</strong>?`,
+      id,
+      'project'
+    );
+
+    document.body.append(confirmationDialog);
+  });
 
   return deleteProject;
 };

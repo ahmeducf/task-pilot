@@ -17,6 +17,7 @@ import {
   CHECK_TASK_COMPLETED,
   CHECK_TASK_NOT_COMPLETED,
   UPDATE_PROJECT,
+  REMOVE_PROJECT,
 } from './pubsub/events-types';
 
 const init = () => {
@@ -112,6 +113,12 @@ const init = () => {
   pubsub.subscribe(UPDATE_PROJECT, (data) => {
     app.updateProject(data.id, data.project);
     pubsub.publish(REFRESH_CONTENT, app);
+    pubsub.publish(RENDER_MENU, app);
+  });
+  pubsub.subscribe(REMOVE_PROJECT, (projectId) => {
+    app.removeProject(projectId);
+    app.setCurrentProject(null);
+    pubsub.publish(RENDER_CONTENT, { app, view: 'inbox' });
     pubsub.publish(RENDER_MENU, app);
   });
   pubsub.subscribe(ADD_TASK, (task) => {

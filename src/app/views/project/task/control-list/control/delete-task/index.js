@@ -39,7 +39,8 @@ const DeleteTaskControl = (task) => {
     const { taskId, taskTitle } = deleteTaskControlData;
     const confirmationDialog = ConfirmationDialog(
       `Are you sure you want to delete <strong>${taskTitle}</strong>?`,
-      taskId
+      taskId,
+      'task'
     );
 
     document.body.append(confirmationDialog);
