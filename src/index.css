@@ -1825,12 +1825,10 @@ input[type='date']#task-due-date::-webkit-calendar-picker-indicator {
 
 .sortable-chosen {
   transform: scale(1.05) translateX(17px);
-  opacity: 1;
 }
 
 .sortable-drag {
   transform: scale(1.05) translateX(17px);
-  opacity: 1;
 }
 
 /* Keyframes */
