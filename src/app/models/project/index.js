@@ -68,6 +68,10 @@ const Project = (state = {}) => {
 
   const isShowCompleted = () => showCompleted;
 
+  const setShowCompleted = (show) => {
+    showCompleted = show;
+  };
+
   const toggleShowCompleted = () => {
     showCompleted = !showCompleted;
   };
@@ -110,6 +114,7 @@ const Project = (state = {}) => {
     updateTask,
     isFavorite,
     isShowCompleted,
+    setShowCompleted,
     toggleShowCompleted,
     toggleFavorite,
     getView,

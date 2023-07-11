@@ -86,7 +86,7 @@ const ShowCompletedControl = (app) => {
   showCompleted.addEventListener('click', () => {
     project.toggleShowCompleted();
 
-    pubsub.publish(TOGGLE_SHOW_COMPLETED, app);
+    pubsub.publish(TOGGLE_SHOW_COMPLETED);
   });
 
   return showCompleted;

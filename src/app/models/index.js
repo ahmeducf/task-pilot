@@ -212,6 +212,8 @@ const setInbox = (inboxData) => {
       inbox.addTask(inboxTask);
     }
   });
+
+  inbox.setShowCompleted(inboxData.showCompleted);
 };
 
 const setTodayView = (todayView) => {
