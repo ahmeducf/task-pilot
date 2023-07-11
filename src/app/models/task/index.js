@@ -11,7 +11,7 @@ import {
 import { PRIORITY } from '../../constants';
 
 const Task = (state = {}) => {
-  const id = uuidv4();
+  const id = state.id ?? uuidv4();
   let title = state.title ?? '';
   let description = state.description ?? '';
   let completed = state.completed ?? false;

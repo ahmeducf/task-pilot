@@ -12,7 +12,7 @@ import View from './view';
 import Task from '../task';
 
 const Project = (state = {}) => {
-  const id = uuidv4();
+  const id = state.id ?? uuidv4();
   let title = state.title ?? '';
   let color = state.color ?? COLOR.GREY;
   let favorite = state.favorite ?? false;
