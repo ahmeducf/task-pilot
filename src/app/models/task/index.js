@@ -15,11 +15,18 @@ const Task = (state = {}) => {
   let title = state.title ?? '';
   let description = state.description ?? '';
   let completed = state.completed ?? false;
-  let dueDate = state.dueDate ?? null;
   let priority = state.priority in PRIORITY ? state.priority : PRIORITY.P4;
   let labels = state.labels ?? [];
   let projectId = state.projectId ?? null;
   let createdDate = new Date();
+  let dueDate;
+  if (!state.dueDate) {
+    dueDate = null;
+  } else if (typeof state.dueDate === 'string') {
+    dueDate = new Date(state.dueDate);
+  } else {
+    dueDate = state.dueDate;
+  }
 
   const getId = () => id;
 

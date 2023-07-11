@@ -200,14 +200,14 @@ const moveTask = (id, projectId) => {
 
 const setProjects = (projectsData) => {
   projectsData.forEach((projectData) => {
-    projects.addProject(projectData);
+    projects.push(Project(projectData));
   });
 };
 
 const setInbox = (inboxData) => {
   inboxData.tasks.forEach((task) => {
     if (!task.projectID) {
-      const inboxTask = new Task(task);
+      const inboxTask = Task(task);
 
       inbox.addTask(inboxTask);
     }
@@ -240,7 +240,7 @@ const toJSON = () => ({
 });
 
 const load = () => {
-  const allProjects = storage.get('projects') ?? { projects: [] };
+  const allProjects = storage.get('projects') ?? [];
   const inboxProject = storage.get('inbox') ?? { tasks: [] };
   const todayView = storage.get('todayView') ?? {
     layout: LAYOUT.LIST,
@@ -251,7 +251,7 @@ const load = () => {
     sort: { sortBy: SORT.DEFAULT, ordering: ORDERING.ASC },
   };
 
-  setProjects(allProjects.projects);
+  setProjects(allProjects);
   setInbox(inboxProject);
   setTodayView(todayView);
   setUpcomingView(upcomingView);
@@ -259,7 +259,6 @@ const load = () => {
 
 const save = () => {
   const appData = toJSON();
-
   storage.set('projects', appData.projects);
   storage.set('inbox', appData.inbox);
   storage.set('todayView', appData.todayView);

@@ -9,15 +9,21 @@
 import { v4 as uuidv4 } from 'uuid';
 import { COLOR } from '../../constants';
 import View from './view';
+import Task from '../task';
 
 const Project = (state = {}) => {
   const id = uuidv4();
   let title = state.title ?? '';
   let color = state.color ?? COLOR.GREY;
-  let tasks = state.tasks ?? [];
   let favorite = state.favorite ?? false;
   let showCompleted = state.showCompleted ?? false;
   const view = View(state.view);
+  let tasks;
+  if (!state.tasks) {
+    tasks = [];
+  } else {
+    tasks = state.tasks.map((task) => Task(task));
+  }
 
   const getId = () => id;
 

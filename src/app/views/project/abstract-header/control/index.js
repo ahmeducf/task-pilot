@@ -1,5 +1,5 @@
 import pubsub from '../../../../pubsub';
-import { REFRESH_CONTENT, RENDER_MENU } from '../../../../pubsub/events-types';
+import { TOGGLE_SHOW_COMPLETED } from '../../../../pubsub/events-types';
 import AddTaskModal from '../../../modals/add-task';
 import ConfirmationDialog from '../../../modals/confirmation-dialog';
 import EditProjectModal from '../../../modals/edit-project';
@@ -86,8 +86,7 @@ const ShowCompletedControl = (app) => {
   showCompleted.addEventListener('click', () => {
     project.toggleShowCompleted();
 
-    pubsub.publish(REFRESH_CONTENT, app);
-    pubsub.publish(RENDER_MENU, app);
+    pubsub.publish(TOGGLE_SHOW_COMPLETED, app);
   });
 
   return showCompleted;

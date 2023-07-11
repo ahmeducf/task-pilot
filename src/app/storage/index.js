@@ -27,7 +27,9 @@ function storageAvailable(type) {
 
 function isJSON(obj) {
   return (
-    obj !== undefined && obj !== null && obj.constructor === {}.constructor
+    obj !== undefined &&
+    obj !== null &&
+    (obj.constructor === {}.constructor || obj.constructor === [].constructor)
   );
 }
 
@@ -36,7 +38,7 @@ const writeToLocalStorage = (key, value) => {
     !storageAvailable('localStorage') ||
     !key ||
     !key.length ||
-    !(key instanceof String) ||
+    !(typeof key === 'string') ||
     !isJSON(value)
   ) {
     return false;
@@ -54,7 +56,7 @@ const readFromLocalStorage = (key) => {
     !storageAvailable('localStorage') ||
     !key ||
     !key.length ||
-    !(key instanceof String)
+    !(typeof key === 'string')
   ) {
     return null;
   }

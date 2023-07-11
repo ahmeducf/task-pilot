@@ -24,4 +24,5 @@ export const REMOVE_TASK = Symbol('REMOVE_TASK');
 export const UPDATE_TASK = Symbol('UPDATE_TASK');
 export const CHECK_TASK_COMPLETED = Symbol('CHECK_TASK_COMPLETED');
 export const CHECK_TASK_NOT_COMPLETED = Symbol('CHECK_TASK_NOT_COMPLETED');
+export const TOGGLE_SHOW_COMPLETED = Symbol('TOGGLE_SHOW_COMPLETED');
 export const MOVE_TASK = Symbol('MOVE_TASK');
